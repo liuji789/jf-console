@@ -1,0 +1,165 @@
+@charset "utf-8";
+/*
+ * reset base
+ * author gaomy
+ * date   2015-06-25
+*/
+a, address, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img,  label, legend, li, mark, menu, nav, object, ol, output, p, pre, progress, q, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+html, body {
+	height: 100%;
+	background-attachment: fixed;
+	font-size: 12px;
+	line-height: 22px;
+	font-family: "SimSun", Arial, Tahoma, Geneva, sans-serif;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+fieldset { border: none; }
+i, em, span, b {
+	font-style: normal;
+	display: inline-block;
+}
+img {
+	vertical-align: middle;
+	border: none;
+	-ms-interpolation-mode: bicubic;
+}
+li, ul {
+	display: list-item;
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+th, td, caption { font-weight: normal; }
+a {
+	text-decoration: none;
+	outline: none;
+}
+input, label, button, select { vertical-align: middle; }
+input,button {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+}
+input,textarea{
+	outline: 0;
+	-webkit-tap-highlight-color: rgba(255,0,0,0);
+}
+button {
+	border: none;
+	cursor: pointer;
+}
+.fl {
+	float: left;
+	display: inline;
+}
+.fr {
+	float: right;
+	display: inline;
+}
+.undis, .h { display: none; }
+.dis { display: block; }
+.clear { clear: both; }
+.clearfix:after {
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";
+	visibility: hidden;
+}
+.mr5 { margin-right: 5px; }
+.mr10 { margin-right: 10px; }
+.mr15 { margin-right: 15px; }
+.mr20 { margin-right: 20px; }
+.mr25 { margin-right: 25px; }
+.mr30 { margin-right: 25px; }
+.mr35 { margin-right: 35px; }
+.mr40 { margin-right: 40px; }
+.mrf10 { margin-right: -10px; }
+.mlf { margin-left: -10px; }
+.ml10 { margin-left: 10px; }
+.ml15 { margin-left: 15px; }
+.ml20 { margin-left: 20px; }
+.ml25 { margin-left: 25px; }
+.ml30 { margin-left: 30px; }
+.ml35 { margin-left: 35px; }
+.mb10 { margin-bottom: 10px; }
+.mb15 { margin-bottom: 15px; }
+.mb20 { margin-bottom: 20px; }
+.mb25 { margin-bottom: 25px; }
+.mb30 { margin-bottom: 30px; }
+.mt5 { margin-top: 5px; }
+.mt10 { margin-top: 10px; }
+.mt15 { margin-top: 15px; }
+.mt20 { margin-top: 20px; }
+.mt25 { margin-top: 25px; }
+.mt30 { margin-top: 30px; }
+.mt35 { margin-top: 35px; }
+.mt40 { margin-top: 45px; }
+.pl10 { padding-left: 10px; }
+.pl15 { padding-left: 15px; }
+.pl20 { padding-left: 20px; }
+.pl40 { padding-left: 43px; }
+.pl55 { padding-left: 55px; }
+.pr10 { padding-right: 10px; }
+.pr50 { padding-right: 50px; }
+.pb5 { padding-bottom: 5px; }
+.pb15 { padding-bottom: 15px; }
+.pt15 { padding-top: 15px; }
+.pt25 { padding-top: 25px; }
+.pt35 { padding-top: 35px; }
+.wd40 { width: 40px; }
+.wd50 { width: 50px; }
+.wd55 { width: 55px; }
+.wd60 { width: 60px; }
+.wd80 { width: 80px; }
+.wd85 { width: 85px; }
+.wd90 { width: 90px; }
+.wd100 { width: 100px; }
+.wd110 { width: 110px; }
+.wd120 { width: 120px; }
+.wd150 { width: 150px; }
+.wd170 { width: 170px; }
+.wd180 { width: 180px; }
+.wd200 { width: 200px; }
+.wd270 { width: 270px; }
+.wd296 { width: 296px; }
+.wd440 { width: 440px; }
+.wd445 { width: 445px; }
+.wd560 { width: 560px; }
+.wd565 { width: 565px; }
+.wd570 { width: 570px; }
+.wd580 { width: 580px; }
+.wd585 { width: 585px; }
+.wd590 { width: 590px; }
+.wd600 { width: 600px; }
+.wd610 { width: 610px; }
+.wd680 { width: 680px; }
+.hg180 { height: 180px; }
+.hg200 { height: 200px; }
+.hg270 { height: 270px; }
+.red01 { color: #fe3200;}
+.org01 { color: #f97207; }
+.gray01 { color: #909090; }
+.gray02 { color: #606060; }
+.green01 { color: #3aa33a;}
+.org02 { color: #ff751b; }
+.blue01 { color: #3a9bed;}
+.font14 { font-size: 14px; }
+.zindex1 { z-index: 1; }
+.zindex5 { z-index: 5; }
+.zindex10 { z-index: 10; }
+.bor-color { border-color: #ccc; }
+.t-center { text-align: center; }
+.t-right { text-align: right; }
+.ver-mid { vertical-align: middle; }
+.ver-bot { vertical-align: bottom; }
+.posR { position: relative; }
+.curHand { cursor: pointer;}

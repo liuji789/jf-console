@@ -1,0 +1,24 @@
+﻿/* 向导组件_橘色 */
+.navigatorPanel{padding-left:5px;height:35px;background:#f7f7f7;*zoom:1;}
+.navigatorPanel:after{height:0;content:" ";clear:both;display:block;}
+.navigatorPanel li{height:35px;line-height:35px;background:url(../img/stepHeader.gif) repeat-x 0 -140px;color:#6b7078;cursor:pointer;float:left;font-weight:bold;position:relative;z-index:100;}
+.navigatorPanel li span{padding:0 25px 0 20px;height:35px;background:url(../img/stepHeader.gif) no-repeat right -70px;border-right:7px solid #f7f7f7;display:block;float:left;}
+.navigatorPanel li .first{width:20px;height:35px;background:url(../img/stepHeader.gif) no-repeat right -210px;display:block;overflow:hidden;position:absolute;top:0;left:-5px;text-indent:-999em;z-index:100;}
+.navigatorPanel li .sl{width:20px;height:35px;background:url(../img/stepHeader.gif) no-repeat;display:block;overflow:hidden;position:absolute;top:0;left:-20px;text-indent:-999em;z-index:100;}
+.navigatorPanel li span.last{background-position:0 -140px;}
+.navigatorPanel li s.last{width:20px;height:35px;background:url(../img/stepHeader.gif) no-repeat right -280px;display:block;overflow:hidden;position:absolute;top:0;right:0;text-indent:-999em;z-index:100;}
+.navigatorPanel li.current{background-position:0 -175px;color:#900;}
+.navigatorPanel li.current span{background-position:right -105px;}
+.navigatorPanel li.current .first{background-position:0 -245px;}
+.navigatorPanel li.current .sl{background-position:0 -35px;}
+.navigatorPanel li.current span.last{background-position:0 -175px;border-right:2px solid #f7f7f7;}
+.navigatorPanel li.current s.last{background:url(../img/stepHeader.gif) no-repeat right -315px;}
+
+.stepBtn,.stepBtn:hover{padding:2px 10px 0;height:20px;line-height:15px;line-height:20px\9;*line-height:18px;background:url(../img/stepBtn.gif) repeat-x;color:#000;cursor:pointer;display:inline-block;position:relative;text-decoration:none; font-size:12px;}
+.stepBtn:hover{background-position:0 -66px;}
+.stepBtn s,.stepBtn:hover s{width:3px;height:22px;background:url(../img/stepBtn.gif) no-repeat;font-size:0;position:absolute;top:0;z-index:100;}
+.stepBtn s.eBorL{background-position:0 -22px;left:-1px;}
+.stepBtn s.eBorR{background-position:0 -44px;right:-1px;_right:-2px;}
+.stepBtn:hover s.eBorL{background-position:0 -88px;left:-1px;}
+.stepBtn:hover s.eBorR{background-position:0 -110px;right:-1px;_right:-2px;}
+.stepBtn em{ width:16px;padding-right:3px; position:relative; top:2px; display:none;}

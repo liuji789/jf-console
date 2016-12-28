@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+a.datetime1 span { display:none;}
+a.datetime1, a.datetime1:hover {
+  display:inline-block;
+  vertical-align:middle;
+  margin:0 3px;
+  text-indent:-999em;
+  width:15px;
+  height:14px;
+  background:url(images/icon_16x16.gif) no-repeat;
+  overflow:hidden;
+  text-decoration:none;
+  zoom:1;
+}
+a.datetime1 { background-position:0 -3px; }
+a.datetime1:hover { background-position:0 -19px; }

@@ -1,0 +1,128 @@
+@charset "utf-8";
+/*body{color:#666;margin:0;padding:0;font-size:12px;line-height:1.5em;background:#fff;margin-left:auto;margin-right:auto;}*/
+/* *+html body{font-family:SimSun, Arial, Helvetica, sans-serif;}/*fix text-decoration bug with IE7*/
+/*h1,h2,h3,h4,h5,h6,p,form,blockquote,fieldset,cite,a{margin:0;padding:0;font-size:12px;word-break:break-all;word-wrap:break-word;}*/
+.pl10 { padding-left:10px;}
+.pr { position:relative;}
+.t1 { top:1px;}
+.w30 { width:30px;}
+.fl { float:left;}
+.pl5 { padding-left:5px;}
+.pr10 { padding-right:10px;}
+/*page*/
+.pagePanel {
+ line-height:40px;
+ padding:10px 0;
+ margin-bottom:10px;
+}
+.page {
+ height:22px;
+ line-height:22px;
+ text-align:right;
+}
+.page input {
+  border:1px solid #ccc;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  width:30px;
+  vertical-align:middle;
+}
+.page a {
+ margin-right:5px;
+ padding:1px 5px;
+ height:20px;
+ line-height:20px;
+ background-color:#fff;
+ border:1px solid #dbdbdb;
+ color:#4e6584;
+ text-align:center;
+}
+.page a.pagePrev, .page a.pageNext { width:36px;}
+.page a.pagePrev {
+ padding:2px 5px 2px 14px;
+ background:url(../images/ico/icon_arrowl.png) no-repeat 5px 5px;
+}
+.page a.pageNext {
+ padding:2px 14px 2px 5px;
+ background:url(../images/ico/icon_arrowr.png) no-repeat 45px 5px;
+}
+.page a:hover {
+ background-color:#5aa3ff;
+ border:1px solid #3b75d6;
+ color:#fff;
+ text-decoration:none;
+}
+.page a.pageCurrent {
+ background-color:#5aa3ff;
+ border:1px solid #3b75d6;
+ color:#fff;
+ text-decoration:none;
+}
+.page a.pagePrev:hover {
+ padding:2px 5px 2px 14px;
+ background:url(../images/ico/icon_arrowl.png) no-repeat 5px -26px #5aa3ff;
+}
+.page a.pageNext:hover {
+ padding:2px 14px 2px 5px;
+ background:url(../images/ico/icon_arrowr.png) no-repeat 45px -26px #5aa3ff;
+}
+.page span {
+ margin-right:5px;
+ height:19px;
+ line-height:19px;
+}
+.page span.pageMore {
+ width:20px;
+}
+.page span.pageCurrent {
+ width:19px;
+ background-color:#5aa3ff;
+ border:1px solid #3b75d6;
+ color:#fff;
+}
+.page span.pagePrev, .page span.pageNext {
+ width:21px;
+ border:1px solid #dbdbdb;
+ overflow:hidden;
+ text-indent:-999em;
+}
+.page span.pagePrev { background:url(../images/ico/icon_arrowl.png) no-repeat 7px 5px;}
+.page span.pageNext { background:url(../images/ico/icon_arrowr.png) no-repeat 7px 5px;}
+.page .btn1, .page .btn1:hover {
+ padding:0 5px;
+ width:auto!important;
+ width:40px;
+ min-width:40px;
+ height:23px;
+ line-height:23px;
+ background:url(../images/btn/btn1.png) repeat-x;
+ border:0;
+ color:#000;
+ display:inline-block;
+ outline:0;
+ position:relative;
+ text-align:center;
+ text-decoration:none;
+ white-space:nowrap;
+}
+.page .btn1 .sl, .page .btn1:hover .sl, .page .btn1 .sr, .page .btn1:hover .sr {
+ width:5px;
+ height:23px;
+ background:url(../images/btn/btn1.png) no-repeat;
+ font-size:0;
+ position:absolute;
+ top:0;
+}
+.page .btn1 { background-position:0 0;}
+.page .btn1 .sl {
+ background-position:0 -23px;
+ left:-5px;
+}
+.page .btn1 .sr {
+ background-position:0 -46px;
+ right:-5px;
+}
+.page .btn1:hover { background-position:0 -69px;}
+.page .btn1:hover .sl { background-position:0 -92px;}
+.page .btn1:hover .sr { background-position:0 -115px;}

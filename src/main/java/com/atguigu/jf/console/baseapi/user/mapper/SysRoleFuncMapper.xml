@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.user.SysRoleFuncMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.user.bean.pojo.SysRoleFunc" >
+    <id column="ROLE_FUNC_ID" property="roleFuncId" jdbcType="DECIMAL" />
+    <result column="ROLE_ID" property="roleId" jdbcType="DECIMAL" />
+    <result column="FUNC_ID" property="funcId" jdbcType="DECIMAL" />
+    <result column="NOTES" property="notes" jdbcType="VARCHAR" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIER" property="modifier" jdbcType="DECIMAL" />
+    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLE_FUNC_ID, ROLE_ID, FUNC_ID, NOTES, DATA_STATE, CREATOR, CREATE_DATE, MODIFIER, 
+    MODIFY_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role_func
+    where ROLE_FUNC_ID = #{roleFuncId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_role_func
+    where ROLE_FUNC_ID = #{roleFuncId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.user.bean.pojo.SysRoleFunc" >
+    <selectKey resultType="java.lang.Long" keyProperty="roleFuncId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role_func (ROLE_FUNC_ID, ROLE_ID, FUNC_ID, 
+      NOTES, DATA_STATE, CREATOR, 
+      CREATE_DATE, MODIFIER, MODIFY_DATE
+      )
+    values (#{roleFuncId,jdbcType=DECIMAL}, #{roleId,jdbcType=DECIMAL}, #{funcId,jdbcType=DECIMAL}, 
+      #{notes,jdbcType=VARCHAR}, #{dataState,jdbcType=DECIMAL}, #{creator,jdbcType=DECIMAL}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{modifier,jdbcType=DECIMAL}, #{modifyDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.user.bean.pojo.SysRoleFunc" >
+    <selectKey resultType="java.lang.Long" keyProperty="roleFuncId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role_func
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ROLE_FUNC_ID,
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="funcId != null" >
+        FUNC_ID,
+      </if>
+      <if test="notes != null" >
+        NOTES,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="modifier != null" >
+        MODIFIER,
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{roleFuncId,jdbcType=DECIMAL},
+      <if test="roleId != null" >
+        #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcId != null" >
+        #{funcId,jdbcType=DECIMAL},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.user.bean.pojo.SysRoleFunc" >
+    update sys_role_func
+    <set >
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcId != null" >
+        FUNC_ID = #{funcId,jdbcType=DECIMAL},
+      </if>
+      <if test="notes != null" >
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ROLE_FUNC_ID = #{roleFuncId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.user.bean.pojo.SysRoleFunc" >
+    update sys_role_func
+    set ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      FUNC_ID = #{funcId,jdbcType=DECIMAL},
+      NOTES = #{notes,jdbcType=VARCHAR},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=DECIMAL},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      MODIFIER = #{modifier,jdbcType=DECIMAL},
+      MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP}
+    where ROLE_FUNC_ID = #{roleFuncId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByRoleFuncByRoleId" parameterType="java.util.Map">
+  	update sys_role_func
+    <set >
+      <if test="funcId != null" >
+        FUNC_ID = #{funcId,jdbcType=DECIMAL},
+      </if>
+      <if test="notes != null" >
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  ROLE_ID = #{roleId,jdbcType=DECIMAL}
+  </update>
+  
+  <insert id="insertBatch" >
+	 <foreach collection="list" item="roleFunc" separator=";">
+	 	 insert into sys_role_func
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      ROLE_FUNC_ID,
+	      <if test="roleFunc.roleId != null" >
+	        ROLE_ID,
+	      </if>
+	      <if test="roleFunc.funcId != null" >
+	        FUNC_ID,
+	      </if>
+	      <if test="roleFunc.notes != null" >
+	        NOTES,
+	      </if>
+	      <if test="roleFunc.dataState != null" >
+	        DATA_STATE,
+	      </if>
+	      <if test="roleFunc.creator != null" >
+	        CREATOR,
+	      </if>
+	      <if test="roleFunc.createDate != null" >
+	        CREATE_DATE,
+	      </if>
+	      <if test="roleFunc.modifier != null" >
+	        MODIFIER,
+	      </if>
+	      <if test="roleFunc.modifyDate != null" >
+	        MODIFY_DATE,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      nextVal('sys_role_func'),
+	      <if test="roleFunc.roleId != null" >
+	        #{roleFunc.roleId,jdbcType=DECIMAL},
+	      </if>
+	      <if test="roleFunc.funcId != null" >
+	        #{roleFunc.funcId,jdbcType=DECIMAL},
+	      </if>
+	      <if test="roleFunc.notes != null" >
+	        #{roleFunc.notes,jdbcType=VARCHAR},
+	      </if>
+	      <if test="roleFunc.dataState != null" >
+	        #{roleFunc.dataState,jdbcType=DECIMAL},
+	      </if>
+	      <if test="roleFunc.creator != null" >
+	        #{roleFunc.creator,jdbcType=DECIMAL},
+	      </if>
+	      <if test="roleFunc.createDate != null" >
+	        #{roleFunc.createDate,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="roleFunc.modifier != null" >
+	        #{roleFunc.modifier,jdbcType=DECIMAL},
+	      </if>
+	      <if test="roleFunc.modifyDate != null" >
+	        #{roleFunc.modifyDate,jdbcType=TIMESTAMP},
+	      </if>
+	   	 </trim>
+    </foreach>
+  </insert>
+</mapper>

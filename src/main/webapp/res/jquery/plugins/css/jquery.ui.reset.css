@@ -1,0 +1,15 @@
+.ui-widget-content {
+	border: 1px solid #ccc;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	background-image: none;
+	background-color: #f9f8f8;
+	border: 1px solid #f8f8f8;
+}
+.ui-menu-item .ui-corner-all { border-color: transparent; }
+.ui-corner-all { border-radius: 0;}

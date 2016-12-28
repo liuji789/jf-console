@@ -1,0 +1,1 @@
+将MindXPanel.cfg放至C:\Windows\System32\Macromed\Flash\FlashPlayerTrust

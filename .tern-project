@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "outline": {
+      
+    },
+    "browser-extension": {
+      
+    },
+    "jquery-extension": {
+      
+    },
+    "angular": {
+      
+    }
+  },
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "ecmaVersion": 5
+}

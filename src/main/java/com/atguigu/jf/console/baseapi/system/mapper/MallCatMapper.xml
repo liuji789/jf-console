@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.system.MallCatMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.system.bean.pojo.MallCat" >
+    <id column="MALL_CAT_ID" property="mallCatId" jdbcType="DECIMAL" />
+    <result column="SUP_MALL_CAT_ID" property="supMallCatId" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_CODE" property="mallCatCode" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_NAME" property="mallCatName" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_DESC" property="mallCatDesc" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_PROMOTION" property="mallCatPromotion" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_LEVEL" property="mallCatLevel" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_LVL_PATH" property="mallCatLvlPath" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_ORDER" property="mallCatOrder" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_PIC_URL" property="mallCatPicUrl" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_LEAF_FLAG" property="mallCatLeafFlag" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_STATE" property="mallCatState" jdbcType="DECIMAL" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MALL_CAT_ID, SUP_MALL_CAT_ID, MALL_CAT_CODE, MALL_CAT_NAME, MALL_CAT_DESC, MALL_CAT_PROMOTION, 
+    MALL_CAT_LEVEL, MALL_CAT_LVL_PATH, MALL_CAT_ORDER, MALL_CAT_PIC_URL, MALL_CAT_LEAF_FLAG, 
+    MALL_CAT_STATE, DATA_STATE, CREATOR, CREATE_TIME, MODIFYER, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ic_mall_cat
+    where MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ic_mall_cat
+    where MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.system.bean.pojo.MallCat" >
+    <selectKey resultType="java.lang.Long" keyProperty="mallCatId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ic_mall_cat (MALL_CAT_ID, SUP_MALL_CAT_ID, MALL_CAT_CODE, 
+      MALL_CAT_NAME, MALL_CAT_DESC, MALL_CAT_PROMOTION, 
+      MALL_CAT_LEVEL, MALL_CAT_LVL_PATH, MALL_CAT_ORDER, 
+      MALL_CAT_PIC_URL, MALL_CAT_LEAF_FLAG, MALL_CAT_STATE, 
+      DATA_STATE, CREATOR, CREATE_TIME, 
+      MODIFYER, MODIFY_TIME)
+    values (#{mallCatId,jdbcType=DECIMAL}, #{supMallCatId,jdbcType=DECIMAL}, #{mallCatCode,jdbcType=VARCHAR}, 
+      #{mallCatName,jdbcType=VARCHAR}, #{mallCatDesc,jdbcType=VARCHAR}, #{mallCatPromotion,jdbcType=VARCHAR}, 
+      #{mallCatLevel,jdbcType=DECIMAL}, #{mallCatLvlPath,jdbcType=VARCHAR}, #{mallCatOrder,jdbcType=DECIMAL}, 
+      #{mallCatPicUrl,jdbcType=VARCHAR}, #{mallCatLeafFlag,jdbcType=DECIMAL}, #{mallCatState,jdbcType=DECIMAL}, 
+      #{dataState,jdbcType=DECIMAL}, #{creator,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyer,jdbcType=DECIMAL}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.system.bean.pojo.MallCat" >
+    <selectKey resultType="java.lang.Long" keyProperty="mallCatId" order="BEFORE" >
+        SELECT nextVal('ic_mall_cat')
+    </selectKey>
+    insert into ic_mall_cat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      MALL_CAT_ID,
+      <if test="supMallCatId != null" >
+        SUP_MALL_CAT_ID,
+      </if>
+      <if test="mallCatCode != null" >
+        MALL_CAT_CODE,
+      </if>
+      <if test="mallCatName != null" >
+        MALL_CAT_NAME,
+      </if>
+      <if test="mallCatDesc != null" >
+        MALL_CAT_DESC,
+      </if>
+      <if test="mallCatPromotion != null" >
+        MALL_CAT_PROMOTION,
+      </if>
+      <if test="mallCatLevel != null" >
+        MALL_CAT_LEVEL,
+      </if>
+      <if test="mallCatLvlPath != null" >
+        MALL_CAT_LVL_PATH,
+      </if>
+      <if test="mallCatOrder != null" >
+        MALL_CAT_ORDER,
+      </if>
+      <if test="mallCatPicUrl != null" >
+        MALL_CAT_PIC_URL,
+      </if>
+      <if test="mallCatLeafFlag != null" >
+        MALL_CAT_LEAF_FLAG,
+      </if>
+      <if test="mallCatState != null" >
+        MALL_CAT_STATE,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{mallCatId,jdbcType=DECIMAL},
+      <if test="supMallCatId != null" >
+        #{supMallCatId,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatCode != null" >
+        #{mallCatCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatName != null" >
+        #{mallCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatDesc != null" >
+        #{mallCatDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatPromotion != null" >
+        #{mallCatPromotion,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatLevel != null" >
+        #{mallCatLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatLvlPath != null" >
+        #{mallCatLvlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatOrder != null" >
+        #{mallCatOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatPicUrl != null" >
+        #{mallCatPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatLeafFlag != null" >
+        #{mallCatLeafFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatState != null" >
+        #{mallCatState,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.system.bean.pojo.MallCat" >
+    update ic_mall_cat
+    <set >
+      <if test="supMallCatId != null" >
+        SUP_MALL_CAT_ID = #{supMallCatId,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatCode != null" >
+        MALL_CAT_CODE = #{mallCatCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatName != null" >
+        MALL_CAT_NAME = #{mallCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatDesc != null" >
+        MALL_CAT_DESC = #{mallCatDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatPromotion != null" >
+        MALL_CAT_PROMOTION = #{mallCatPromotion,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatLevel != null" >
+        MALL_CAT_LEVEL = #{mallCatLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatLvlPath != null" >
+        MALL_CAT_LVL_PATH = #{mallCatLvlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatOrder != null" >
+        MALL_CAT_ORDER = #{mallCatOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatPicUrl != null" >
+        MALL_CAT_PIC_URL = #{mallCatPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mallCatLeafFlag != null" >
+        MALL_CAT_LEAF_FLAG = #{mallCatLeafFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="mallCatState != null" >
+        MALL_CAT_STATE = #{mallCatState,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.system.bean.pojo.MallCat" >
+    update ic_mall_cat
+    set SUP_MALL_CAT_ID = #{supMallCatId,jdbcType=DECIMAL},
+      MALL_CAT_CODE = #{mallCatCode,jdbcType=VARCHAR},
+      MALL_CAT_NAME = #{mallCatName,jdbcType=VARCHAR},
+      MALL_CAT_DESC = #{mallCatDesc,jdbcType=VARCHAR},
+      MALL_CAT_PROMOTION = #{mallCatPromotion,jdbcType=VARCHAR},
+      MALL_CAT_LEVEL = #{mallCatLevel,jdbcType=DECIMAL},
+      MALL_CAT_LVL_PATH = #{mallCatLvlPath,jdbcType=VARCHAR},
+      MALL_CAT_ORDER = #{mallCatOrder,jdbcType=DECIMAL},
+      MALL_CAT_PIC_URL = #{mallCatPicUrl,jdbcType=VARCHAR},
+      MALL_CAT_LEAF_FLAG = #{mallCatLeafFlag,jdbcType=DECIMAL},
+      MALL_CAT_STATE = #{mallCatState,jdbcType=DECIMAL},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL}
+  </update>
+  <select id="selecMallCatList" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	select 
+    	<include refid="Base_Column_List" />
+    FROM ic_mall_cat WHERE DATA_STATE = 1
+   	  <if test="supMallCatId != null" >
+       and SUP_MALL_CAT_ID = #{supMallCatId,jdbcType=DECIMAL}
+      </if>
+      <if test="mallCatCode != null" >
+       and MALL_CAT_CODE = #{mallCatCode,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatName != null" >
+       and MALL_CAT_NAME = #{mallCatName,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatDesc != null" >
+       and MALL_CAT_DESC = #{mallCatDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatPromotion != null" >
+       and MALL_CAT_PROMOTION = #{mallCatPromotion,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatLevel != null" >
+       and MALL_CAT_LEVEL = #{mallCatLevel,jdbcType=DECIMAL}
+      </if>
+      <if test="mallCatLvlPath != null" >
+       and MALL_CAT_LVL_PATH = #{mallCatLvlPath,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatOrder != null" >
+       and MALL_CAT_ORDER = #{mallCatOrder,jdbcType=DECIMAL}
+      </if>
+      <if test="mallCatPicUrl != null" >
+       and MALL_CAT_PIC_URL = #{mallCatPicUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="mallCatLeafFlag != null" >
+       and MALL_CAT_LEAF_FLAG = #{mallCatLeafFlag,jdbcType=DECIMAL}
+      </if>
+      <if test="mallCatState != null" >
+       and MALL_CAT_STATE = #{mallCatState,jdbcType=DECIMAL}
+      </if>
+      <if test="dataState != null" >
+       and DATA_STATE = #{dataState,jdbcType=DECIMAL}
+      </if>
+      <if test="creator != null" >
+       and CREATOR = #{creator,jdbcType=DECIMAL}
+      </if>
+      <if test="createTime != null" >
+       and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyer != null" >
+       and MODIFYER = #{modifyer,jdbcType=DECIMAL}
+      </if>
+      <if test="modifyTime != null" >
+       and MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+</mapper>

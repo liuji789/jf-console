@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.order.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.order.bean.pojo.Goods" >
+    <id column="GOODS_ID" property="goodsId" jdbcType="DECIMAL" />
+    <result column="ORDER_ID" property="orderId" jdbcType="DECIMAL" />
+    <result column="ITEM_CHK_CODE" property="itemChkCode" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="DECIMAL" />
+    <result column="MCHT_NAME" property="mchtName" jdbcType="VARCHAR" />
+    <result column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="DECIMAL" />
+    <result column="ITEM_CODE" property="itemCode" jdbcType="DECIMAL" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="ITEM_ACT_PRICE" property="itemActPrice" jdbcType="DECIMAL" />
+    <result column="GOODS_DEAL_FEE" property="goodsDealFee" jdbcType="DECIMAL" />
+    <result column="RTNISTD_STATE" property="rtnistdState" jdbcType="DECIMAL" />
+    <result column="RTNISTD_RSN_TYPE" property="rtnistdRsnType" jdbcType="DECIMAL" />
+    <result column="RTNISTD_REASON" property="rtnistdReason" jdbcType="VARCHAR" />
+    <result column="GOODS_RFD_FEE" property="goodsRfdFee" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_NICKNAME" property="userNickname" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="USER_PHONENO" property="userPhoneno" jdbcType="VARCHAR" />
+    <result column="ITEM_VALID_START" property="itemValidStart" jdbcType="TIMESTAMP" />
+    <result column="ITEM_VALID_END" property="itemValidEnd" jdbcType="TIMESTAMP" />
+    <result column="USE_TIME" property="useTime" jdbcType="TIMESTAMP" />
+    <result column="USE_RESULT" property="useResult" jdbcType="DECIMAL" />
+    <result column="SHOP_ID" property="shopId" jdbcType="DECIMAL" />
+    <result column="SHOP_SHORT_NAME" property="shopShortName" jdbcType="VARCHAR" />
+    <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" />
+    <result column="EXP_STATE" property="expState" jdbcType="DECIMAL" />
+    <result column="EXP_TIME" property="expTime" jdbcType="TIMESTAMP" />
+    <result column="CHECK_STATE" property="checkState" jdbcType="DECIMAL" />
+    <result column="SETTLEMENT_DATE" property="settlementDate" jdbcType="TIMESTAMP" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GOODS_ID, ORDER_ID, ITEM_CHK_CODE, MCHT_ID, MCHT_NAME, ITEM_ID, ITEM_TYPE, ITEM_CODE, 
+    ITEM_NAME, ITEM_ACT_PRICE, GOODS_DEAL_FEE, RTNISTD_STATE, RTNISTD_RSN_TYPE, RTNISTD_REASON, 
+    GOODS_RFD_FEE, USER_ID, USER_NAME, USER_NICKNAME, LOGIN_NAME, USER_PHONENO, ITEM_VALID_START, 
+    ITEM_VALID_END, USE_TIME, USE_RESULT, SHOP_ID, SHOP_SHORT_NAME, SHOP_NAME, EXP_STATE, 
+    EXP_TIME, CHECK_STATE, SETTLEMENT_DATE, DATA_STATE, CREATOR, CREATE_TIME, MODIFYER, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tc_goods
+    where GOODS_ID = #{goodsId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tc_goods
+    where GOODS_ID = #{goodsId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.order.bean.pojo.Goods" >
+    <selectKey resultType="java.lang.Long" keyProperty="goodsId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tc_goods (GOODS_ID, ORDER_ID, ITEM_CHK_CODE, 
+      MCHT_ID, MCHT_NAME, ITEM_ID, 
+      ITEM_TYPE, ITEM_CODE, ITEM_NAME, 
+      ITEM_ACT_PRICE, GOODS_DEAL_FEE, RTNISTD_STATE, 
+      RTNISTD_RSN_TYPE, RTNISTD_REASON, GOODS_RFD_FEE, 
+      USER_ID, USER_NAME, USER_NICKNAME, 
+      LOGIN_NAME, USER_PHONENO, ITEM_VALID_START, 
+      ITEM_VALID_END, USE_TIME, USE_RESULT, 
+      SHOP_ID, SHOP_SHORT_NAME, SHOP_NAME, 
+      EXP_STATE, EXP_TIME, CHECK_STATE, 
+      SETTLEMENT_DATE, DATA_STATE, CREATOR, 
+      CREATE_TIME, MODIFYER, MODIFY_TIME
+      )
+    values (#{goodsId,jdbcType=DECIMAL}, #{orderId,jdbcType=DECIMAL}, #{itemChkCode,jdbcType=VARCHAR}, 
+      #{mchtId,jdbcType=DECIMAL}, #{mchtName,jdbcType=VARCHAR}, #{itemId,jdbcType=DECIMAL}, 
+      #{itemType,jdbcType=DECIMAL}, #{itemCode,jdbcType=DECIMAL}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemActPrice,jdbcType=DECIMAL}, #{goodsDealFee,jdbcType=DECIMAL}, #{rtnistdState,jdbcType=DECIMAL}, 
+      #{rtnistdRsnType,jdbcType=DECIMAL}, #{rtnistdReason,jdbcType=VARCHAR}, #{goodsRfdFee,jdbcType=DECIMAL}, 
+      #{userId,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, 
+      #{loginName,jdbcType=VARCHAR}, #{userPhoneno,jdbcType=VARCHAR}, #{itemValidStart,jdbcType=TIMESTAMP}, 
+      #{itemValidEnd,jdbcType=TIMESTAMP}, #{useTime,jdbcType=TIMESTAMP}, #{useResult,jdbcType=DECIMAL}, 
+      #{shopId,jdbcType=DECIMAL}, #{shopShortName,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{expState,jdbcType=DECIMAL}, #{expTime,jdbcType=TIMESTAMP}, #{checkState,jdbcType=DECIMAL}, 
+      #{settlementDate,jdbcType=TIMESTAMP}, #{dataState,jdbcType=DECIMAL}, #{creator,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyer,jdbcType=DECIMAL}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.order.bean.pojo.Goods" >
+    <selectKey resultType="java.lang.Long" keyProperty="goodsId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tc_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      GOODS_ID,
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="itemChkCode != null" >
+        ITEM_CHK_CODE,
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID,
+      </if>
+      <if test="mchtName != null" >
+        MCHT_NAME,
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID,
+      </if>
+      <if test="itemType != null" >
+        ITEM_TYPE,
+      </if>
+      <if test="itemCode != null" >
+        ITEM_CODE,
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME,
+      </if>
+      <if test="itemActPrice != null" >
+        ITEM_ACT_PRICE,
+      </if>
+      <if test="goodsDealFee != null" >
+        GOODS_DEAL_FEE,
+      </if>
+      <if test="rtnistdState != null" >
+        RTNISTD_STATE,
+      </if>
+      <if test="rtnistdRsnType != null" >
+        RTNISTD_RSN_TYPE,
+      </if>
+      <if test="rtnistdReason != null" >
+        RTNISTD_REASON,
+      </if>
+      <if test="goodsRfdFee != null" >
+        GOODS_RFD_FEE,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userNickname != null" >
+        USER_NICKNAME,
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME,
+      </if>
+      <if test="userPhoneno != null" >
+        USER_PHONENO,
+      </if>
+      <if test="itemValidStart != null" >
+        ITEM_VALID_START,
+      </if>
+      <if test="itemValidEnd != null" >
+        ITEM_VALID_END,
+      </if>
+      <if test="useTime != null" >
+        USE_TIME,
+      </if>
+      <if test="useResult != null" >
+        USE_RESULT,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="shopShortName != null" >
+        SHOP_SHORT_NAME,
+      </if>
+      <if test="shopName != null" >
+        SHOP_NAME,
+      </if>
+      <if test="expState != null" >
+        EXP_STATE,
+      </if>
+      <if test="expTime != null" >
+        EXP_TIME,
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE,
+      </if>
+      <if test="settlementDate != null" >
+        SETTLEMENT_DATE,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{goodsId,jdbcType=DECIMAL},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemChkCode != null" >
+        #{itemChkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        #{mchtId,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtName != null" >
+        #{mchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemActPrice != null" >
+        #{itemActPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsDealFee != null" >
+        #{goodsDealFee,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdState != null" >
+        #{rtnistdState,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdRsnType != null" >
+        #{rtnistdRsnType,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdReason != null" >
+        #{rtnistdReason,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsRfdFee != null" >
+        #{goodsRfdFee,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null" >
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoneno != null" >
+        #{userPhoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValidStart != null" >
+        #{itemValidStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemValidEnd != null" >
+        #{itemValidEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useTime != null" >
+        #{useTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useResult != null" >
+        #{useResult,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=DECIMAL},
+      </if>
+      <if test="shopShortName != null" >
+        #{shopShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="expState != null" >
+        #{expState,jdbcType=DECIMAL},
+      </if>
+      <if test="expTime != null" >
+        #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkState != null" >
+        #{checkState,jdbcType=DECIMAL},
+      </if>
+      <if test="settlementDate != null" >
+        #{settlementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.order.bean.pojo.Goods" >
+    update tc_goods
+    <set >
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemChkCode != null" >
+        ITEM_CHK_CODE = #{itemChkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID = #{mchtId,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtName != null" >
+        MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID = #{itemId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemType != null" >
+        ITEM_TYPE = #{itemType,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCode != null" >
+        ITEM_CODE = #{itemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemActPrice != null" >
+        ITEM_ACT_PRICE = #{itemActPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsDealFee != null" >
+        GOODS_DEAL_FEE = #{goodsDealFee,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdState != null" >
+        RTNISTD_STATE = #{rtnistdState,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdRsnType != null" >
+        RTNISTD_RSN_TYPE = #{rtnistdRsnType,jdbcType=DECIMAL},
+      </if>
+      <if test="rtnistdReason != null" >
+        RTNISTD_REASON = #{rtnistdReason,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsRfdFee != null" >
+        GOODS_RFD_FEE = #{goodsRfdFee,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null" >
+        USER_NICKNAME = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoneno != null" >
+        USER_PHONENO = #{userPhoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValidStart != null" >
+        ITEM_VALID_START = #{itemValidStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemValidEnd != null" >
+        ITEM_VALID_END = #{itemValidEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useTime != null" >
+        USE_TIME = #{useTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useResult != null" >
+        USE_RESULT = #{useResult,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=DECIMAL},
+      </if>
+      <if test="shopShortName != null" >
+        SHOP_SHORT_NAME = #{shopShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="expState != null" >
+        EXP_STATE = #{expState,jdbcType=DECIMAL},
+      </if>
+      <if test="expTime != null" >
+        EXP_TIME = #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE = #{checkState,jdbcType=DECIMAL},
+      </if>
+      <if test="settlementDate != null" >
+        SETTLEMENT_DATE = #{settlementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where GOODS_ID = #{goodsId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.order.bean.pojo.Goods" >
+    update tc_goods
+    set ORDER_ID = #{orderId,jdbcType=DECIMAL},
+      ITEM_CHK_CODE = #{itemChkCode,jdbcType=VARCHAR},
+      MCHT_ID = #{mchtId,jdbcType=DECIMAL},
+      MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+      ITEM_ID = #{itemId,jdbcType=DECIMAL},
+      ITEM_TYPE = #{itemType,jdbcType=DECIMAL},
+      ITEM_CODE = #{itemCode,jdbcType=DECIMAL},
+      ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      ITEM_ACT_PRICE = #{itemActPrice,jdbcType=DECIMAL},
+      GOODS_DEAL_FEE = #{goodsDealFee,jdbcType=DECIMAL},
+      RTNISTD_STATE = #{rtnistdState,jdbcType=DECIMAL},
+      RTNISTD_RSN_TYPE = #{rtnistdRsnType,jdbcType=DECIMAL},
+      RTNISTD_REASON = #{rtnistdReason,jdbcType=VARCHAR},
+      GOODS_RFD_FEE = #{goodsRfdFee,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_NICKNAME = #{userNickname,jdbcType=VARCHAR},
+      LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      USER_PHONENO = #{userPhoneno,jdbcType=VARCHAR},
+      ITEM_VALID_START = #{itemValidStart,jdbcType=TIMESTAMP},
+      ITEM_VALID_END = #{itemValidEnd,jdbcType=TIMESTAMP},
+      USE_TIME = #{useTime,jdbcType=TIMESTAMP},
+      USE_RESULT = #{useResult,jdbcType=DECIMAL},
+      SHOP_ID = #{shopId,jdbcType=DECIMAL},
+      SHOP_SHORT_NAME = #{shopShortName,jdbcType=VARCHAR},
+      SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      EXP_STATE = #{expState,jdbcType=DECIMAL},
+      EXP_TIME = #{expTime,jdbcType=TIMESTAMP},
+      CHECK_STATE = #{checkState,jdbcType=DECIMAL},
+      SETTLEMENT_DATE = #{settlementDate,jdbcType=TIMESTAMP},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where GOODS_ID = #{goodsId,jdbcType=DECIMAL}
+  </update>
+  
+  <resultMap type="com.atguigu.jf.console.order.bean.bo.ShopBean" id="ShopBeanMap">
+  	<id column="SHOP_ID" property="shopId" jdbcType="DECIMAL"/>
+  	<result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectAllShop" resultMap="ShopBeanMap">
+  	SELECT
+  		SHOP_ID,
+  		SHOP_NAME
+	FROM
+  		sc_shop
+  </select>
+  
+  <resultMap type="com.atguigu.jf.console.order.bean.bo.GoodsBean" id="GoodsBeanMap">
+  	<id column="GOODS_ID" property="goodsId" jdbcType="DECIMAL" />
+    <result column="ORDER_ID" property="orderId" jdbcType="DECIMAL" />
+    <result column="ITEM_CHK_CODE" property="itemChkCode" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="DECIMAL" />
+    <result column="MCHT_NAME" property="mchtName" jdbcType="VARCHAR" />
+    <result column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="DECIMAL" />
+    <result column="ITEM_CODE" property="itemCode" jdbcType="DECIMAL" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="ITEM_ACT_PRICE" property="itemActPrice" jdbcType="DECIMAL" />
+    <result column="GOODS_DEAL_FEE" property="goodsDealFee" jdbcType="DECIMAL" />
+    <result column="RTNISTD_STATE" property="rtnistdState" jdbcType="DECIMAL" />
+    <result column="RTNISTD_RSN_TYPE" property="rtnistdRsnType" jdbcType="DECIMAL" />
+    <result column="RTNISTD_REASON" property="rtnistdReason" jdbcType="VARCHAR" />
+    <result column="GOODS_RFD_FEE" property="goodsRfdFee" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_NICKNAME" property="userNickname" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="USER_PHONENO" property="userPhoneno" jdbcType="VARCHAR" />
+    <result column="ITEM_VALID_START" property="itemValidStart" jdbcType="TIMESTAMP" />
+    <result column="ITEM_VALID_END" property="itemValidEnd" jdbcType="TIMESTAMP" />
+    <result column="USE_TIME" property="useTime" jdbcType="TIMESTAMP" />
+    <result column="USE_RESULT" property="useResult" jdbcType="DECIMAL" />
+    <result column="SHOP_ID" property="shopId" jdbcType="DECIMAL" />
+    <result column="SHOP_SHORT_NAME" property="shopShortName" jdbcType="VARCHAR" />
+    <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" />
+    <result column="EXP_STATE" property="expState" jdbcType="DECIMAL" />
+    <result column="EXP_TIME" property="expTime" jdbcType="TIMESTAMP" />
+    <result column="CHECK_STATE" property="checkState" jdbcType="DECIMAL" />
+    <result column="SETTLEMENT_DATE" property="settlementDate" jdbcType="TIMESTAMP" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="ORDER_TIME" property="orderTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <select id="selecGoodsBeanList" parameterType="java.util.Map" resultMap="GoodsBeanMap">
+  	SELECT
+	  tg.GOODS_ID,
+	  tg.ORDER_ID,
+	  tg.ITEM_CHK_CODE,
+	  tg.MCHT_ID,
+	  tg.MCHT_NAME,
+	  tg.ITEM_ID,
+	  tg.ITEM_TYPE,
+	  tg.ITEM_CODE,
+	  tg.ITEM_NAME,
+	  tg.ITEM_ACT_PRICE,
+	  tg.GOODS_DEAL_FEE,
+	  tg.RTNISTD_STATE,
+	  tg.RTNISTD_RSN_TYPE,
+	  tg.RTNISTD_REASON,
+	  tg.GOODS_RFD_FEE,
+	  tg.USER_ID,
+	  tg.USER_NAME,
+	  tg.USER_NICKNAME,
+	  tg.LOGIN_NAME,
+	  tg.USER_PHONENO,
+	  tg.ITEM_VALID_START,
+	  tg.ITEM_VALID_END,
+	  tg.USE_TIME,
+	  tg.USE_RESULT,
+	  tg.SHOP_ID,
+	  tg.SHOP_SHORT_NAME,
+	  tg.SHOP_NAME,
+	  tg.EXP_STATE,
+	  tg.EXP_TIME,
+	  tg.CHECK_STATE,
+	  tg.SETTLEMENT_DATE,
+	  tg.DATA_STATE,
+	  tg.CREATOR,
+	  tg.CREATE_TIME,
+	  tg.MODIFYER,
+	  tg.MODIFY_TIME,
+	  tco.`ORDER_TIME`
+	FROM
+	  tc_goods tg 
+	  LEFT JOIN tc_order tco
+	  ON tg.`ORDER_ID`= tco.`ORDER_ID`
+	  WHERE tg.`DATA_STATE`=1 AND
+	  tco.`DATA_STATE`=1
+	  <if test="shopId !=null and shopId != ''">
+	  	and tg.SHOP_ID=#{shopId}
+	  </if>
+	  <if test="itemCode !=null and itemCode != ''">
+	  	and tg.ITEM_CODE=#{itemCode}
+	  </if>
+	  <if test="itemName !=null and itemName != ''">
+	  	and tg.ITEM_NAME=#{itemName}
+	  </if>
+	  <if test="expStartTime !=null and expStartTime !='' and expEndTime !=null and expEndTime !=''">
+	  	and tg.`EXP_TIME` BETWEEN #{expStartTime} AND #{expEndTime}
+	  </if>
+	  <if test="useStartTime !=null and useStartTime !='' and useEndTime !=null and useEndTime !=''">
+	  	and tg.`USE_TIME` BETWEEN #{useStartTime} AND #{useEndTime}
+	  </if>
+  </select>
+  <select id="selectSetConsumeCount" resultType="java.lang.Long">
+  	SELECT
+	  COUNT(1)
+	FROM
+	  tc_order tco
+	WHERE tco.`DATA_STATE` = 1
+	  AND tco.`PAY_STATE` = 2
+  </select>
+  <select id="selectSettleCountCount" resultType="java.lang.Long">
+  	SELECT
+	  COUNT(1)
+	FROM
+	  tc_goods tg
+	WHERE tg.`DATA_STATE` = 1
+	  AND tg.`CHECK_STATE` = 1
+  </select>
+  
+  <select id="selectItemActPriceSettleCount" resultType="java.math.BigDecimal">
+	SELECT
+	  SUM(tg.`ITEM_ACT_PRICE`-tg.`GOODS_DEAL_FEE`)
+	FROM
+	  tc_goods tg
+	WHERE tg.`CHECK_STATE` = 1
+	  AND tg.`DATA_STATE` = 1  
+  </select>
+  
+</mapper>

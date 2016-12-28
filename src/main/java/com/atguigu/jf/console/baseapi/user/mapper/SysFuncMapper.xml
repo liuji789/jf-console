@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.user.SysFuncMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.user.bean.pojo.SysFunc" >
+    <id column="FUNC_ID" property="funcId" jdbcType="DECIMAL" />
+    <result column="RES_ID" property="resId" jdbcType="DECIMAL" />
+    <result column="OPRT_TYPE_ID" property="oprtTypeId" jdbcType="DECIMAL" />
+    <result column="FUNC_TYPE" property="funcType" jdbcType="DECIMAL" />
+    <result column="SUP_FUNC_ID" property="supFuncId" jdbcType="DECIMAL" />
+    <result column="FUNC_LEVEL" property="funcLevel" jdbcType="DECIMAL" />
+    <result column="FUNC_LVL_PATH" property="funcLvlPath" jdbcType="VARCHAR" />
+    <result column="FUNC_CODE" property="funcCode" jdbcType="VARCHAR" />
+    <result column="FUNC_NAME" property="funcName" jdbcType="VARCHAR" />
+    <result column="FUNC_DESC" property="funcDesc" jdbcType="VARCHAR" />
+    <result column="FUNC_ORDER" property="funcOrder" jdbcType="DECIMAL" />
+    <result column="FUNC_URL" property="funcUrl" jdbcType="VARCHAR" />
+    <result column="FUNC_IMG" property="funcImg" jdbcType="VARCHAR" />
+    <result column="FUNC_PARAM" property="funcParam" jdbcType="VARCHAR" />
+    <result column="IF_DISPLAY" property="ifDisplay" jdbcType="DECIMAL" />
+    <result column="IF_COMMENT" property="ifComment" jdbcType="DECIMAL" />
+    <result column="FUNC_HELP_FLAG" property="funcHelpFlag" jdbcType="DECIMAL" />
+    <result column="FUNC_HELP_URL" property="funcHelpUrl" jdbcType="VARCHAR" />
+    <result column="DOMAIN_ID" property="domainId" jdbcType="DECIMAL" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIER" property="modifier" jdbcType="DECIMAL" />
+    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="BaseResultMapBean" type="com.atguigu.jf.console.user.bean.bo.SysFuncBean" >
+    <id column="FUNC_ID" property="funcId" jdbcType="DECIMAL" />
+    <result column="SUP_FUNC_ID" property="supFuncId" jdbcType="DECIMAL" />
+    <result column="FUNC_LEVEL" property="funcLevel" jdbcType="DECIMAL" />
+    <result column="FUNC_CODE" property="funcCode" jdbcType="VARCHAR" />
+    <result column="FUNC_NAME" property="funcName" jdbcType="VARCHAR" />
+    <result column="FUNC_ORDER" property="funcOrder" jdbcType="DECIMAL" />
+    <result column="FUNC_URL" property="funcUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FUNC_ID, RES_ID, OPRT_TYPE_ID, FUNC_TYPE, SUP_FUNC_ID, FUNC_LEVEL, FUNC_LVL_PATH, 
+    FUNC_CODE, FUNC_NAME, FUNC_DESC, FUNC_ORDER, FUNC_URL, FUNC_IMG, FUNC_PARAM, IF_DISPLAY, 
+    IF_COMMENT, FUNC_HELP_FLAG, FUNC_HELP_URL, DOMAIN_ID, STATE, DATA_STATE, CREATOR, 
+    CREATE_DATE, MODIFIER, MODIFY_DATE
+  </sql>
+  <sql id="Base_Column_List_bean" >
+    FUNC_ID, SUP_FUNC_ID, FUNC_LEVEL,
+    FUNC_CODE, FUNC_NAME, FUNC_ORDER, FUNC_URL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_func
+    where FUNC_ID = #{funcId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_func
+    where FUNC_ID = #{funcId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.user.bean.pojo.SysFunc" >
+    <selectKey resultType="java.lang.Long" keyProperty="funcId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_func (FUNC_ID, RES_ID, OPRT_TYPE_ID, 
+      FUNC_TYPE, SUP_FUNC_ID, FUNC_LEVEL, 
+      FUNC_LVL_PATH, FUNC_CODE, FUNC_NAME, 
+      FUNC_DESC, FUNC_ORDER, FUNC_URL, 
+      FUNC_IMG, FUNC_PARAM, IF_DISPLAY, 
+      IF_COMMENT, FUNC_HELP_FLAG, FUNC_HELP_URL, 
+      DOMAIN_ID, STATE, DATA_STATE, 
+      CREATOR, CREATE_DATE, MODIFIER, 
+      MODIFY_DATE)
+    values (#{funcId,jdbcType=DECIMAL}, #{resId,jdbcType=DECIMAL}, #{oprtTypeId,jdbcType=DECIMAL}, 
+      #{funcType,jdbcType=DECIMAL}, #{supFuncId,jdbcType=DECIMAL}, #{funcLevel,jdbcType=DECIMAL}, 
+      #{funcLvlPath,jdbcType=VARCHAR}, #{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, 
+      #{funcDesc,jdbcType=VARCHAR}, #{funcOrder,jdbcType=DECIMAL}, #{funcUrl,jdbcType=VARCHAR}, 
+      #{funcImg,jdbcType=VARCHAR}, #{funcParam,jdbcType=VARCHAR}, #{ifDisplay,jdbcType=DECIMAL}, 
+      #{ifComment,jdbcType=DECIMAL}, #{funcHelpFlag,jdbcType=DECIMAL}, #{funcHelpUrl,jdbcType=VARCHAR}, 
+      #{domainId,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, #{dataState,jdbcType=DECIMAL}, 
+      #{creator,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP}, #{modifier,jdbcType=DECIMAL}, 
+      #{modifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.user.bean.pojo.SysFunc" >
+    <selectKey resultType="java.lang.Long" keyProperty="funcId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_func
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      FUNC_ID,
+      <if test="resId != null" >
+        RES_ID,
+      </if>
+      <if test="oprtTypeId != null" >
+        OPRT_TYPE_ID,
+      </if>
+      <if test="funcType != null" >
+        FUNC_TYPE,
+      </if>
+      <if test="supFuncId != null" >
+        SUP_FUNC_ID,
+      </if>
+      <if test="funcLevel != null" >
+        FUNC_LEVEL,
+      </if>
+      <if test="funcLvlPath != null" >
+        FUNC_LVL_PATH,
+      </if>
+      <if test="funcCode != null" >
+        FUNC_CODE,
+      </if>
+      <if test="funcName != null" >
+        FUNC_NAME,
+      </if>
+      <if test="funcDesc != null" >
+        FUNC_DESC,
+      </if>
+      <if test="funcOrder != null" >
+        FUNC_ORDER,
+      </if>
+      <if test="funcUrl != null" >
+        FUNC_URL,
+      </if>
+      <if test="funcImg != null" >
+        FUNC_IMG,
+      </if>
+      <if test="funcParam != null" >
+        FUNC_PARAM,
+      </if>
+      <if test="ifDisplay != null" >
+        IF_DISPLAY,
+      </if>
+      <if test="ifComment != null" >
+        IF_COMMENT,
+      </if>
+      <if test="funcHelpFlag != null" >
+        FUNC_HELP_FLAG,
+      </if>
+      <if test="funcHelpUrl != null" >
+        FUNC_HELP_URL,
+      </if>
+      <if test="domainId != null" >
+        DOMAIN_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="modifier != null" >
+        MODIFIER,
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{funcId,jdbcType=DECIMAL},
+      <if test="resId != null" >
+        #{resId,jdbcType=DECIMAL},
+      </if>
+      <if test="oprtTypeId != null" >
+        #{oprtTypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcType != null" >
+        #{funcType,jdbcType=DECIMAL},
+      </if>
+      <if test="supFuncId != null" >
+        #{supFuncId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcLevel != null" >
+        #{funcLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="funcLvlPath != null" >
+        #{funcLvlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="funcCode != null" >
+        #{funcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null" >
+        #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="funcDesc != null" >
+        #{funcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="funcOrder != null" >
+        #{funcOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="funcUrl != null" >
+        #{funcUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="funcImg != null" >
+        #{funcImg,jdbcType=VARCHAR},
+      </if>
+      <if test="funcParam != null" >
+        #{funcParam,jdbcType=VARCHAR},
+      </if>
+      <if test="ifDisplay != null" >
+        #{ifDisplay,jdbcType=DECIMAL},
+      </if>
+      <if test="ifComment != null" >
+        #{ifComment,jdbcType=DECIMAL},
+      </if>
+      <if test="funcHelpFlag != null" >
+        #{funcHelpFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="funcHelpUrl != null" >
+        #{funcHelpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null" >
+        #{domainId,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.user.bean.pojo.SysFunc" >
+    update sys_func
+    <set >
+      <if test="resId != null" >
+        RES_ID = #{resId,jdbcType=DECIMAL},
+      </if>
+      <if test="oprtTypeId != null" >
+        OPRT_TYPE_ID = #{oprtTypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcType != null" >
+        FUNC_TYPE = #{funcType,jdbcType=DECIMAL},
+      </if>
+      <if test="supFuncId != null" >
+        SUP_FUNC_ID = #{supFuncId,jdbcType=DECIMAL},
+      </if>
+      <if test="funcLevel != null" >
+        FUNC_LEVEL = #{funcLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="funcLvlPath != null" >
+        FUNC_LVL_PATH = #{funcLvlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="funcCode != null" >
+        FUNC_CODE = #{funcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null" >
+        FUNC_NAME = #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="funcDesc != null" >
+        FUNC_DESC = #{funcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="funcOrder != null" >
+        FUNC_ORDER = #{funcOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="funcUrl != null" >
+        FUNC_URL = #{funcUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="funcImg != null" >
+        FUNC_IMG = #{funcImg,jdbcType=VARCHAR},
+      </if>
+      <if test="funcParam != null" >
+        FUNC_PARAM = #{funcParam,jdbcType=VARCHAR},
+      </if>
+      <if test="ifDisplay != null" >
+        IF_DISPLAY = #{ifDisplay,jdbcType=DECIMAL},
+      </if>
+      <if test="ifComment != null" >
+        IF_COMMENT = #{ifComment,jdbcType=DECIMAL},
+      </if>
+      <if test="funcHelpFlag != null" >
+        FUNC_HELP_FLAG = #{funcHelpFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="funcHelpUrl != null" >
+        FUNC_HELP_URL = #{funcHelpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null" >
+        DOMAIN_ID = #{domainId,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where FUNC_ID = #{funcId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.user.bean.pojo.SysFunc" >
+    update sys_func
+    set RES_ID = #{resId,jdbcType=DECIMAL},
+      OPRT_TYPE_ID = #{oprtTypeId,jdbcType=DECIMAL},
+      FUNC_TYPE = #{funcType,jdbcType=DECIMAL},
+      SUP_FUNC_ID = #{supFuncId,jdbcType=DECIMAL},
+      FUNC_LEVEL = #{funcLevel,jdbcType=DECIMAL},
+      FUNC_LVL_PATH = #{funcLvlPath,jdbcType=VARCHAR},
+      FUNC_CODE = #{funcCode,jdbcType=VARCHAR},
+      FUNC_NAME = #{funcName,jdbcType=VARCHAR},
+      FUNC_DESC = #{funcDesc,jdbcType=VARCHAR},
+      FUNC_ORDER = #{funcOrder,jdbcType=DECIMAL},
+      FUNC_URL = #{funcUrl,jdbcType=VARCHAR},
+      FUNC_IMG = #{funcImg,jdbcType=VARCHAR},
+      FUNC_PARAM = #{funcParam,jdbcType=VARCHAR},
+      IF_DISPLAY = #{ifDisplay,jdbcType=DECIMAL},
+      IF_COMMENT = #{ifComment,jdbcType=DECIMAL},
+      FUNC_HELP_FLAG = #{funcHelpFlag,jdbcType=DECIMAL},
+      FUNC_HELP_URL = #{funcHelpUrl,jdbcType=VARCHAR},
+      DOMAIN_ID = #{domainId,jdbcType=DECIMAL},
+      STATE = #{state,jdbcType=DECIMAL},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=DECIMAL},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      MODIFIER = #{modifier,jdbcType=DECIMAL},
+      MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP}
+    where FUNC_ID = #{funcId,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectSysFuncByOpId" resultMap="BaseResultMapBean" parameterType="java.util.Map">
+  	SELECT <include refid="Base_Column_List_bean"/> from sys_func s where s.FUNC_ID in (
+	SELECT srf.func_id from sys_role_func srf,sys_op_role sor
+	where sor.role_id = srf.role_id and sor.DATA_STATE=1 and srf.DATA_STATE =1 and sor.op_id = #{OpId})
+  </select>
+  
+  
+  <resultMap id="BaseResultMapZtree" type="com.atguigu.jf.console.user.bean.bo.SysFuncZtreeBean" >
+    <id column="FUNC_ID" property="funcId" jdbcType="DECIMAL" />
+    <result column="SUP_FUNC_ID" property="supFuncId" jdbcType="DECIMAL" />
+    <result column="FUNC_LEVEL" property="funcLevel" jdbcType="DECIMAL" />
+    <result column="FUNC_CODE" property="funcCode" jdbcType="VARCHAR" />
+    <result column="FUNC_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="FUNC_ORDER" property="funcOrder" jdbcType="DECIMAL" />
+    <result column="FUNC_URL" property="funcUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <select id="selectAllSysFunc" resultMap="BaseResultMapZtree">
+  	select <include refid="Base_Column_List_bean"/> from sys_func  WHERE DATA_STATE = 1
+  </select>
+  <select id="selectSysFuncByRoleId" resultMap="BaseResultMapBean" parameterType="java.util.Map">
+  	SELECT
+  		<include refid="Base_Column_List_bean"/>
+	FROM
+	  sys_func f
+	WHERE f.`DATA_STATE` = 1
+	  AND f.`FUNC_ID` IN
+	  (SELECT
+	    srf.`FUNC_ID`
+	  FROM
+	    sys_role_func srf
+	  WHERE srf.`ROLE_ID` = #{roleId} AND srf.`DATA_STATE` = 1)
+  </select>
+  
+</mapper>

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.pcproverider.PcProviderMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.pcproverider.bean.pojo.PcProvider" >
+    <id column="PROVIDER_ID" property="providerId" jdbcType="DECIMAL" />
+    <result column="PROVIDER_NAME" property="providerName" jdbcType="VARCHAR" />
+    <result column="PROVIDER_SHORT_NAME" property="providerShortName" jdbcType="VARCHAR" />
+    <result column="PROVIDER_CODE" property="providerCode" jdbcType="VARCHAR" />
+    <result column="PROVIDER_PIC_URL" property="providerPicUrl" jdbcType="VARCHAR" />
+    <result column="PROVIDER_DESC" property="providerDesc" jdbcType="VARCHAR" />
+    <result column="PROVIDER_POINT_RATIO" property="providerPointRatio" jdbcType="DECIMAL" />
+    <result column="PROVIDER_POINT_FEE" property="providerPointFee" jdbcType="DECIMAL" />
+    <result column="BALANCE_TERM" property="balanceTerm" jdbcType="DECIMAL" />
+    <result column="BALANCE_TYPE" property="balanceType" jdbcType="DECIMAL" />
+    <result column="BPROVIDER_LICENSE" property="bproviderLicense" jdbcType="VARCHAR" />
+    <result column="BPROVIDER_CONTRACT" property="bproviderContract" jdbcType="VARCHAR" />
+    <result column="PROV_ID" property="provId" jdbcType="DECIMAL" />
+    <result column="CITY_ID" property="cityId" jdbcType="DECIMAL" />
+    <result column="REGION_ID" property="regionId" jdbcType="DECIMAL" />
+    <result column="PROVIDER_ADDRESS" property="providerAddress" jdbcType="VARCHAR" />
+    <result column="CUSTSRV_PHONE" property="custsrvPhone" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="CONTACT_PHONE" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="CONTACT_PHONE2" property="contactPhone2" jdbcType="VARCHAR" />
+    <result column="CONTACT_EMAIL" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="PROVIDER_REMARK" property="providerRemark" jdbcType="VARCHAR" />
+    <result column="PROVIDER_PHONE" property="providerPhone" jdbcType="VARCHAR" />
+    <result column="PROVIDER_WEBURL" property="providerWeburl" jdbcType="VARCHAR" />
+    <result column="PROVIDER_STATUS" property="providerStatus" jdbcType="DECIMAL" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pc_provider
+    where PROVIDER_ID = #{providerId,jdbcType=DECIMAL}
+  </delete>
+  
+  <sql id="Base_Column_List" >
+    PROVIDER_ID, PROVIDER_NAME, PROVIDER_SHORT_NAME, PROVIDER_CODE, PROVIDER_PIC_URL, 
+    PROVIDER_DESC, PROVIDER_POINT_RATIO, PROVIDER_POINT_FEE, BALANCE_TERM, BALANCE_TYPE, 
+    BPROVIDER_LICENSE, BPROVIDER_CONTRACT, PROV_ID, CITY_ID, REGION_ID, PROVIDER_ADDRESS, 
+    CUSTSRV_PHONE, CONTACT_NAME, CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, PROVIDER_REMARK, 
+    PROVIDER_PHONE, PROVIDER_WEBURL, PROVIDER_STATUS, DATA_STATE, CREATOR, CREATE_TIME, 
+    MODIFYER, MODIFY_TIME
+  </sql>
+  <insert id="insert" parameterType="com.atguigu.jf.console.pcproverider.bean.pojo.PcProvider" >
+    insert into pc_provider (PROVIDER_ID, PROVIDER_NAME, PROVIDER_SHORT_NAME, 
+      PROVIDER_CODE, PROVIDER_PIC_URL, PROVIDER_DESC, 
+      PROVIDER_POINT_RATIO, PROVIDER_POINT_FEE, BALANCE_TERM, 
+      BALANCE_TYPE, BPROVIDER_LICENSE, BPROVIDER_CONTRACT, 
+      PROV_ID, CITY_ID, REGION_ID, 
+      PROVIDER_ADDRESS, CUSTSRV_PHONE, CONTACT_NAME, 
+      CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, 
+      PROVIDER_REMARK, PROVIDER_PHONE, PROVIDER_WEBURL, 
+      PROVIDER_STATUS, DATA_STATE, CREATOR, 
+      CREATE_TIME, MODIFYER, MODIFY_TIME
+      )
+     values (#{providerId,jdbcType=DECIMAL}, #{providerName,jdbcType=VARCHAR}, #{providerShortName,jdbcType=VARCHAR}, 
+      #{providerCode,jdbcType=VARCHAR}, #{providerPicUrl,jdbcType=VARCHAR}, #{providerDesc,jdbcType=VARCHAR}, 
+      #{providerPointRatio,jdbcType=DECIMAL}, #{providerPointFee,jdbcType=DECIMAL}, #{balanceTerm,jdbcType=DECIMAL}, 
+      #{balanceType,jdbcType=DECIMAL}, #{bproviderLicense,jdbcType=VARCHAR}, #{bproviderContract,jdbcType=VARCHAR}, 
+      #{provId,jdbcType=DECIMAL}, #{cityId,jdbcType=DECIMAL}, #{regionId,jdbcType=DECIMAL}, 
+      #{providerAddress,jdbcType=VARCHAR}, #{custsrvPhone,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{contactPhone2,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR}, 
+      #{providerRemark,jdbcType=VARCHAR}, #{providerPhone,jdbcType=VARCHAR}, #{providerWeburl,jdbcType=VARCHAR}, 
+      #{providerStatus,jdbcType=DECIMAL}, #{dataState,jdbcType=DECIMAL}, #{creator,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyer,jdbcType=DECIMAL}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>  <!-- updateByPrimaryKey -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.pcproverider.bean.pojo.PcProvider" >
+    update pc_provider
+    
+     <set >
+      <if test="providerId != null" >
+        PROVIDER_ID = #{providerId,jdbcType=DECIMAL},
+      </if>
+      <if test="providerName != null" >
+        PROVIDER_NAME = #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerShortName != null" >
+        PROVIDER_SHORT_NAME = #{providerShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerCode != null" >
+        PROVIDER_CODE = #{providerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPicUrl != null" >
+        PROVIDER_PIC_URL = #{providerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerDesc != null" >
+        PROVIDER_DESC = #{providerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPointRatio != null" >
+        PROVIDER_POINT_RATIO = #{providerPointRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="providerPointFee != null" >
+        PROVIDER_POINT_FEE = #{providerPointFee,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceTerm != null" >
+        BALANCE_TERM = #{balanceTerm,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceType != null" >
+        BALANCE_TYPE = #{balanceType,jdbcType=DECIMAL},
+      </if>
+      <if test="bproviderLicense != null" >
+        BPROVIDER_LICENSE = #{bproviderLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bproviderContract != null" >
+        BPROVIDER_CONTRACT = #{bproviderContract,jdbcType=VARCHAR},
+      </if>
+      <if test="provId != null" >
+        PROV_ID = #{provId,jdbcType=DECIMAL},
+      </if>
+      <if test="cityId != null" >
+        CITY_ID = #{cityId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=DECIMAL},
+      </if>
+      <if test="providerAddress != null" >
+        PROVIDER_ADDRESS = #{providerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="custsrvPhone != null" >
+        CUSTSRV_PHONE = #{custsrvPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        CONTACT_PHONE = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone2 != null" >
+        CONTACT_PHONE2 = #{contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="providerRemark != null" >
+        PROVIDER_REMARK = #{providerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPhone != null" >
+        PROVIDER_PHONE = #{providerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="providerWeburl != null" >
+        PROVIDER_WEBURL = #{providerWeburl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerStatus != null" >
+        PROVIDER_STATUS = #{providerStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+            DATA_STATE = 1
+        <if test="providerId !=null and providerId !=''">
+           and PROVIDER_ID = #{providerId,jdbcType=DECIMAL} 
+        </if>
+       <if test="providerName != null" >
+           and PROVIDER_NAME = #{providerName,jdbcType=VARCHAR} 
+       </if>
+    </where>
+  
+  
+  </update>
+  
+    <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.pcproverider.bean.pojo.PcProvider" >
+    update pc_provider
+    <set >
+      <if test="providerName != null" >
+        PROVIDER_NAME = #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerShortName != null" >
+        PROVIDER_SHORT_NAME = #{providerShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerCode != null" >
+        PROVIDER_CODE = #{providerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPicUrl != null" >
+        PROVIDER_PIC_URL = #{providerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerDesc != null" >
+        PROVIDER_DESC = #{providerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPointRatio != null" >
+        PROVIDER_POINT_RATIO = #{providerPointRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="providerPointFee != null" >
+        PROVIDER_POINT_FEE = #{providerPointFee,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceTerm != null" >
+        BALANCE_TERM = #{balanceTerm,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceType != null" >
+        BALANCE_TYPE = #{balanceType,jdbcType=DECIMAL},
+      </if>
+      <if test="bproviderLicense != null" >
+        BPROVIDER_LICENSE = #{bproviderLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bproviderContract != null" >
+        BPROVIDER_CONTRACT = #{bproviderContract,jdbcType=VARCHAR},
+      </if>
+      <if test="provId != null" >
+        PROV_ID = #{provId,jdbcType=DECIMAL},
+      </if>
+      <if test="cityId != null" >
+        CITY_ID = #{cityId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=DECIMAL},
+      </if>
+      <if test="providerAddress != null" >
+        PROVIDER_ADDRESS = #{providerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="custsrvPhone != null" >
+        CUSTSRV_PHONE = #{custsrvPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        CONTACT_PHONE = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone2 != null" >
+        CONTACT_PHONE2 = #{contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="providerRemark != null" >
+        PROVIDER_REMARK = #{providerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPhone != null" >
+        PROVIDER_PHONE = #{providerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="providerWeburl != null" >
+        PROVIDER_WEBURL = #{providerWeburl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerStatus != null" >
+        PROVIDER_STATUS = #{providerStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PROVIDER_ID = #{providerId,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select PROVIDER_ID, PROVIDER_NAME, PROVIDER_SHORT_NAME, PROVIDER_CODE, PROVIDER_PIC_URL, 
+    PROVIDER_DESC, PROVIDER_POINT_RATIO, PROVIDER_POINT_FEE, BALANCE_TERM, BALANCE_TYPE, 
+    BPROVIDER_LICENSE, BPROVIDER_CONTRACT, PROV_ID, CITY_ID, REGION_ID, PROVIDER_ADDRESS, 
+    CUSTSRV_PHONE, CONTACT_NAME, CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, PROVIDER_REMARK, 
+    PROVIDER_PHONE, PROVIDER_WEBURL, PROVIDER_STATUS, DATA_STATE, CREATOR, CREATE_TIME, 
+    MODIFYER, MODIFY_TIME
+    from pc_provider
+    where PROVIDER_ID = #{providerId,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select PROVIDER_ID, PROVIDER_NAME, PROVIDER_SHORT_NAME, PROVIDER_CODE, PROVIDER_PIC_URL, 
+    PROVIDER_DESC, PROVIDER_POINT_RATIO, PROVIDER_POINT_FEE, BALANCE_TERM, BALANCE_TYPE, 
+    BPROVIDER_LICENSE, BPROVIDER_CONTRACT, PROV_ID, CITY_ID, REGION_ID, PROVIDER_ADDRESS, 
+    CUSTSRV_PHONE, CONTACT_NAME, CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, PROVIDER_REMARK, 
+    PROVIDER_PHONE, PROVIDER_WEBURL, PROVIDER_STATUS, DATA_STATE, CREATOR, CREATE_TIME, 
+    MODIFYER, MODIFY_TIME
+    from pc_provider
+  </select>
+  
+  <!-- public List<PcProveriderService> getPcProveriderList(Map<String, Object> map) {
+  -->
+
+     <select id ="getPcProveriderList" resultMap="BaseResultMap" parameterType="java.util.Map" > 
+            select *
+    <!--  <include refid="Base_Column_List"/> -->
+         from pc_provider
+         where  DATA_STATE=1 
+         <if test="providerName!=null and providerName !='' ">
+               and  PROVIDER_NAME = #{providerName,jdbcType=DECIMAL}
+         </if>
+         
+     </select>
+     
+     
+  <!-- 保存供应商      int savePcProvider(PcProvider pcProvider);   注意细节问题    主键不能自增  先从数据库中查出来再 查询-->
+  <insert id="savePcProvider" parameterType="com.atguigu.jf.console.pcproverider.bean.pojo.PcProvider" >
+  	<selectKey keyProperty="providerId" order="BEFORE" resultType="long">
+  		 
+  		SELECT nextVal('pc_provider')
+  	</selectKey>
+    insert into pc_provider
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="providerId != null" >
+        PROVIDER_ID,
+      </if>
+      <if test="providerName != null" >
+        PROVIDER_NAME,
+      </if>
+      <if test="providerShortName != null" >
+        PROVIDER_SHORT_NAME,
+      </if>
+      <if test="providerCode != null" >
+        PROVIDER_CODE,
+      </if>
+      <if test="providerPicUrl != null" >
+        PROVIDER_PIC_URL,
+      </if>
+      <if test="providerDesc != null" >
+        PROVIDER_DESC,
+      </if>
+      <if test="providerPointRatio != null" >
+        PROVIDER_POINT_RATIO,
+      </if>
+      <if test="providerPointFee != null" >
+        PROVIDER_POINT_FEE,
+      </if>
+      <if test="balanceTerm != null" >
+        BALANCE_TERM,
+      </if>
+      <if test="balanceType != null" >
+        BALANCE_TYPE,
+      </if>
+      <if test="bproviderLicense != null" >
+        BPROVIDER_LICENSE,
+      </if>
+      <if test="bproviderContract != null" >
+        BPROVIDER_CONTRACT,
+      </if>
+      <if test="provId != null" >
+        PROV_ID,
+      </if>
+      <if test="cityId != null" >
+        CITY_ID,
+      </if>
+      <if test="regionId != null" >
+        REGION_ID,
+      </if>
+      <if test="providerAddress != null" >
+        PROVIDER_ADDRESS,
+      </if>
+      <if test="custsrvPhone != null" >
+        CUSTSRV_PHONE,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="contactPhone != null" >
+        CONTACT_PHONE,
+      </if>
+      <if test="contactPhone2 != null" >
+        CONTACT_PHONE2,
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL,
+      </if>
+      <if test="providerRemark != null" >
+        PROVIDER_REMARK,
+      </if>
+      <if test="providerPhone != null" >
+        PROVIDER_PHONE,
+      </if>
+      <if test="providerWeburl != null" >
+        PROVIDER_WEBURL,
+      </if>
+      <if test="providerStatus != null" >
+        PROVIDER_STATUS,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="providerId != null" >
+        #{providerId,jdbcType=DECIMAL},
+      </if>
+      <if test="providerName != null" >
+        #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerShortName != null" >
+        #{providerShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerCode != null" >
+        #{providerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPicUrl != null" >
+        #{providerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerDesc != null" >
+        #{providerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPointRatio != null" >
+        #{providerPointRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="providerPointFee != null" >
+        #{providerPointFee,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceTerm != null" >
+        #{balanceTerm,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceType != null" >
+        #{balanceType,jdbcType=DECIMAL},
+      </if>
+      <if test="bproviderLicense != null" >
+        #{bproviderLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bproviderContract != null" >
+        #{bproviderContract,jdbcType=VARCHAR},
+      </if>
+      <if test="provId != null" >
+        #{provId,jdbcType=DECIMAL},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=DECIMAL},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=DECIMAL},
+      </if>
+      <if test="providerAddress != null" >
+        #{providerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="custsrvPhone != null" >
+        #{custsrvPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone2 != null" >
+        #{contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="providerRemark != null" >
+        #{providerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="providerPhone != null" >
+        #{providerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="providerWeburl != null" >
+        #{providerWeburl,jdbcType=VARCHAR},
+      </if>
+      <if test="providerStatus != null" >
+        #{providerStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+   
+   <select id="getAreaProvince" resultType="com.atguigu.jf.console.pcproverider.bean.bo.AreaDefBean">
+   	SELECT
+	  ad.`AREA_ID` 'areaId',
+	  ad.`AREA_NAME` 'areaName'
+	FROM
+	  area_def ad
+	WHERE ad.`AREA_LEVEL` = 2
+   </select>
+   
+   <select id="getAreaCity" resultType="com.atguigu.jf.console.pcproverider.bean.bo.AreaDefBean" parameterType="java.lang.Long">
+   	SELECT
+	  ad.`AREA_ID` 'areaId',
+	  ad.`AREA_NAME` 'areaName'
+	FROM
+	  area_def ad
+	WHERE ad.`AREA_LEVEL` = 3 AND ad.`SUP_AREA_ID`=#{provId}
+   </select>
+   
+   <select id="getAreaRegion" resultType="com.atguigu.jf.console.pcproverider.bean.bo.AreaDefBean" parameterType="java.lang.Long">
+   	SELECT
+	  ad.`AREA_ID` 'areaId',
+	  ad.`AREA_NAME` 'areaName'
+	FROM
+	  area_def ad
+	WHERE ad.`AREA_LEVEL` = 4
+	  AND ad.`SUP_AREA_ID`=#{cityId}
+   </select>
+		 
+</mapper>

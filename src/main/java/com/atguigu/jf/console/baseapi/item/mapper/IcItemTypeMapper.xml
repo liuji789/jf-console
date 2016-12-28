@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.item.IcItemTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.item.bean.pojo.IcItemType" >
+    <id column="ITEM_TYPE" property="itemType" jdbcType="DECIMAL" />
+    <result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ITEM_TYPE, ITEM_TYPE_NAME, DATA_STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ic_item_type
+    where ITEM_TYPE = #{itemType,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ic_item_type
+    where ITEM_TYPE = #{itemType,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItemType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="itemType" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ic_item_type (ITEM_TYPE, ITEM_TYPE_NAME, DATA_STATE
+      )
+    values (#{itemType,jdbcType=DECIMAL}, #{itemTypeName,jdbcType=VARCHAR}, #{dataState,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItemType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="itemType" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ic_item_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ITEM_TYPE,
+      <if test="itemTypeName != null" >
+        ITEM_TYPE_NAME,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{itemType,jdbcType=DECIMAL},
+      <if test="itemTypeName != null" >
+        #{itemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItemType" >
+    update ic_item_type
+    <set >
+      <if test="itemTypeName != null" >
+        ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ITEM_TYPE = #{itemType,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItemType" >
+    update ic_item_type
+    set ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL}
+    where ITEM_TYPE = #{itemType,jdbcType=DECIMAL}
+  </update>
+  
+  <!-- 查询所有的ItemType -->
+  <select id="selectIcItemTypeList" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from ic_item_type
+  </select>
+</mapper>

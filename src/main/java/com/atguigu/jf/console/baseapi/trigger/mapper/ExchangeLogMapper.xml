@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.trigger.ExchangeLogMapper" >
+	<select id="selectExchageLog" parameterType="java.util.Map" resultType="com.atguigu.jf.console.trigger.bean.bo.ExchangeLogBean">
+		SELECT
+			pel.EXCHANGE_LOG_ID "id",
+			DATE_FORMAT(pel.OP_DATE,'%Y-%m-%d %T')  "impDate",
+			pp.PROVIDER_NAME "providerName",
+			pel.PROVIDER_POINT_NUM "impPoint",
+			ROUND(pp.PROVIDER_POINT_RATIO,2) "rate",
+			ROUND(pp.PROVIDER_POINT_FEE,2) "fee",
+			CONCAT(CAST(ROUND(pel.PROVIDER_POINT_NUM/pp.PROVIDER_POINT_RATIO,2) AS CHAR),'元') "amount",
+			CONCAT(CAST(ROUND((pel.PROVIDER_POINT_NUM/pp.PROVIDER_POINT_RATIO)/pp.PROVIDER_POINT_FEE,2) AS CHAR),'元') "profit",
+			IF(pel.CHECK_STATE,'已结算','未结算') "exchangeState",	
+			DATE_FORMAT(pel.CHECK_DATE,'%Y-%m-%d %T') "exchangeDate",
+			IF(pel.EXP_STATE,'已导出','未导出') "exportState",
+			DATE_FORMAT(pel.EXP_DATE,'%Y-%m-%d %T') "exportDate"
+			
+		FROM
+			pc_exchange_log pel
+		LEFT JOIN pc_provider pp ON pp.PROVIDER_ID = pel.PROVIDER_ID
+	</select>
+	
+</mapper>

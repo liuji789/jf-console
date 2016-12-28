@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.common.CodeValueMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.common.bean.pojo.CodeValue" >
+    <id column="CODE_TYPE" property="codeType" jdbcType="INTEGER" />
+    <id column="CODE_VALUE" property="codeValue" jdbcType="VARCHAR" />
+    <result column="CODE_NAME" property="codeName" jdbcType="VARCHAR" />
+    <result column="CODE_DESC" property="codeDesc" jdbcType="VARCHAR" />
+    <result column="CODE_ORDER" property="codeOrder" jdbcType="DECIMAL" />
+    <result column="SUP_CODE_VALUE" property="supCodeValue" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CODE_TYPE, CODE_VALUE, CODE_NAME, CODE_DESC, CODE_ORDER, SUP_CODE_VALUE, CREATE_DATE, 
+    DATA_STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from code_value
+    where CODE_TYPE = #{codeType,jdbcType=INTEGER}
+      and CODE_VALUE = #{codeValue,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from code_value
+    where CODE_TYPE = #{codeType,jdbcType=INTEGER}
+      and CODE_VALUE = #{codeValue,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.common.bean.pojo.CodeValue" >
+    insert into code_value (CODE_TYPE, CODE_VALUE, CODE_NAME, 
+      CODE_DESC, CODE_ORDER, SUP_CODE_VALUE, 
+      CREATE_DATE, DATA_STATE)
+    values (#{codeType,jdbcType=INTEGER}, #{codeValue,jdbcType=VARCHAR}, #{codeName,jdbcType=VARCHAR}, 
+      #{codeDesc,jdbcType=VARCHAR}, #{codeOrder,jdbcType=DECIMAL}, #{supCodeValue,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{dataState,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.common.bean.pojo.CodeValue" >
+    insert into code_value
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codeType != null" >
+        CODE_TYPE,
+      </if>
+      <if test="codeValue != null" >
+        CODE_VALUE,
+      </if>
+      <if test="codeName != null" >
+        CODE_NAME,
+      </if>
+      <if test="codeDesc != null" >
+        CODE_DESC,
+      </if>
+      <if test="codeOrder != null" >
+        CODE_ORDER,
+      </if>
+      <if test="supCodeValue != null" >
+        SUP_CODE_VALUE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codeType != null" >
+        #{codeType,jdbcType=INTEGER},
+      </if>
+      <if test="codeValue != null" >
+        #{codeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="codeName != null" >
+        #{codeName,jdbcType=VARCHAR},
+      </if>
+      <if test="codeDesc != null" >
+        #{codeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codeOrder != null" >
+        #{codeOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="supCodeValue != null" >
+        #{supCodeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.common.bean.pojo.CodeValue" >
+    update code_value
+    <set >
+      <if test="codeName != null" >
+        CODE_NAME = #{codeName,jdbcType=VARCHAR},
+      </if>
+      <if test="codeDesc != null" >
+        CODE_DESC = #{codeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codeOrder != null" >
+        CODE_ORDER = #{codeOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="supCodeValue != null" >
+        SUP_CODE_VALUE = #{supCodeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CODE_TYPE = #{codeType,jdbcType=INTEGER}
+      and CODE_VALUE = #{codeValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.common.bean.pojo.CodeValue" >
+    update code_value
+    set CODE_NAME = #{codeName,jdbcType=VARCHAR},
+      CODE_DESC = #{codeDesc,jdbcType=VARCHAR},
+      CODE_ORDER = #{codeOrder,jdbcType=DECIMAL},
+      SUP_CODE_VALUE = #{supCodeValue,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL}
+    where CODE_TYPE = #{codeType,jdbcType=INTEGER}
+      and CODE_VALUE = #{codeValue,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCodeValueByType" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> from code_value where CODE_TYPE=#{codeType} ORDER BY CODE_ORDER
+  </select>
+</mapper>

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>时间日期</title>
+<link rel="stylesheet" type="text/css" href="My97DatePicker/skinex/skinex.css" />
+</head>
+<body>
+
+<div class="mt10 pt30 pr20 pl20 tl">
+	<ul class="p20 bb1cccd lh22">
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w50 fl" type="text" id="yearBox" />
+				<a href="###" class="datetime1" id="year">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5 lh23">年</span>
+		</li>
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w50 fl" type="text" id="monthBox" />
+				<a href="###" class="datetime1" id="month">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5">月</span>
+		</li>
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w150 fl" type="text" id="ymdBox" />
+				<a href="###" class="datetime1" id="ymd">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5">年-月-日</span>
+		</li>
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w150 fl" type="text" id="ymdhBox" />
+				<a href="###" class="datetime1" id="ymdh">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5">年-月-日 时</span>
+		</li>
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w150 fl" type="text" id="ymdhmBox" />
+				<a href="###" class="datetime1" id="ymdhm">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5">年-月-日 时:分</span>
+		</li>
+		<li class="pt15 clearfix">
+			<span class="fl pr">
+				<input class="eInput w150 fl" type="text" id="ymdhmsBox" />
+				<a href="###" class="datetime1" id="ymdhms">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</span>
+			<span class="fl pl5">年-月-日 时:分:秒</span>
+		</li>
+	</ul>				
+	
+</div>
+			
+</body>
+</html>
+<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../../jquery/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*
+	* 年
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#year").live("click",function(){
+		WdatePicker({
+			el: "yearBox",
+			dateFmt: "yyyy"
+		});
+	});
+	/*
+	* 月
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#month").live("click",function(){
+		WdatePicker({
+			el: "monthBox",
+			dateFmt: "MM"
+		});
+	});
+	/*
+	* 年-月-日
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#ymd").live("click",function(){
+		WdatePicker({
+			el: "ymdBox",
+			dateFmt: "yyyy-MM-dd"
+		});
+	});
+	/*
+	* 年-月-日 时
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#ymdh").live("click",function(){
+		WdatePicker({
+			el: "ymdhBox",
+			dateFmt: "yyyy-MM-dd HH"
+		});
+	});
+	/*
+	* 年-月-日 时分
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#ymdhm").live("click",function(){
+		WdatePicker({
+			el: "ymdhmBox",
+			dateFmt: "yyyy-MM-dd HH:mm"
+		});
+	});
+	/*
+	* 年-月-日 时分秒
+	* Author yjp
+	* Date 2013-1-7
+	*/
+	$("#ymdhms").live("click",function(){
+		WdatePicker({
+			el: "ymdhmsBox",
+			dateFmt: "yyyy-MM-dd HH:mm:ss"
+		});
+	});
+});
+</script>

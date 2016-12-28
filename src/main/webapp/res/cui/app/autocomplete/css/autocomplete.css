@@ -1,0 +1,8 @@
+/*auto complete style*/
+.ui-autocomplete{padding-top:0;max-height:260px;background:#fff;border:1px solid #999;border-radius:0;overflow-y:auto;overflow-x:hidden;text-align:left;}
+* html .ui-autocomplete{height:260px;}
+.ui-menu .ui-menu-item{padding-top:2px;}
+.ui-menu .ui-menu-item a{padding-top:0;padding-bottom:0;height:23px;line-height:23px;background:#fff;border:0;color:#333;position:relative;z-index:2;}
+.ui-menu .ui-menu-item a span{color:#abb7c5;position:absolute;top:0px;right:5px;z-index:100;}
+.ui-menu .ui-menu-item a.ui-state-hover,.ui-menu .ui-menu-item a.ui-state-active{margin:0;background:#468cfe;border:0;border-radius:0;color:#fff;font-weight:normal;}
+.ui-menu .ui-menu-item a.ui-state-hover span,.ui-menu .ui-menu-item a.ui-state-active span{color:#fff;}

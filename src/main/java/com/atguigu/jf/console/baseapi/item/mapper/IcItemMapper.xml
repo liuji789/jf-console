@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jf.console.baseapi.item.IcItemMapper" >
+  <resultMap id="BaseResultMap" type="com.atguigu.jf.console.item.bean.pojo.IcItem" >
+    <id column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_ID" property="mallCatId" jdbcType="DECIMAL" />
+    <result column="ITEM_CODE" property="itemCode" jdbcType="DECIMAL" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="DECIMAL" />
+    <result column="MCHT_NAME" property="mchtName" jdbcType="VARCHAR" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="DECIMAL" />
+    <result column="ITEM_MCHT_NO" property="itemMchtNo" jdbcType="VARCHAR" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="ITEM_SHORT_NAME" property="itemShortName" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC1" property="itemDesc1" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC2" property="itemDesc2" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC3" property="itemDesc3" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC4" property="itemDesc4" jdbcType="VARCHAR" />
+    <result column="ITEM_COST_PRICE" property="itemCostPrice" jdbcType="DECIMAL" />
+    <result column="ITEM_MARKET_PRICE" property="itemMarketPrice" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_PRICE" property="itemSalePrice" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_NUM" property="itemSaleNum" jdbcType="DECIMAL" />
+    <result column="ITEM_NUM" property="itemNum" jdbcType="DECIMAL" />
+    <result column="ITEM_VALID_START" property="itemValidStart" jdbcType="TIMESTAMP" />
+    <result column="ITEM_VALID_END" property="itemValidEnd" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SALE_ATTR" property="itemSaleAttr" jdbcType="VARCHAR" />
+    <result column="ITEM_APPR_STATE" property="itemApprState" jdbcType="DECIMAL" />
+    <result column="ITEM_UD_STATE" property="itemUdState" jdbcType="DECIMAL" />
+    <result column="ITEM_STATE_TIME" property="itemStateTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SCHDLON_STATE" property="itemSchdlonState" jdbcType="DECIMAL" />
+    <result column="ITEM_SCHDLON_TIME" property="itemSchdlonTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SCHDLDOWN_TIME" property="itemSchdldownTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_FORCEOFF_STATE" property="itemForceoffState" jdbcType="DECIMAL" />
+    <result column="ITEM_FORCEOFF_TIME" property="itemForceoffTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_FORCEOFF_REASON" property="itemForceoffReason" jdbcType="VARCHAR" />
+    <result column="ITEM_SEO_KEYWORD" property="itemSeoKeyword" jdbcType="VARCHAR" />
+    <result column="ITEM_SEO_DESC" property="itemSeoDesc" jdbcType="VARCHAR" />
+    <result column="ITEM_MAX_BUY_NUMS" property="itemMaxBuyNums" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_FLAG" property="itemSaleFlag" jdbcType="DECIMAL" />
+    <result column="OPTL_PAY_TYPE_STR" property="optlPayTypeStr" jdbcType="VARCHAR" />
+    <result column="DATA_VERSION" property="dataVersion" jdbcType="DECIMAL" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMapBean" type="com.atguigu.jf.console.item.bean.bo.IcItemBean" >
+   <id column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+    <result column="MALL_CAT_ID" property="mallCatId" jdbcType="DECIMAL" />
+    <result column="ITEM_CODE" property="itemCode" jdbcType="DECIMAL" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="DECIMAL" />
+    <result column="MCHT_NAME" property="mchtName" jdbcType="VARCHAR" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="DECIMAL" />
+    <result column="ITEM_MCHT_NO" property="itemMchtNo" jdbcType="VARCHAR" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="ITEM_SHORT_NAME" property="itemShortName" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC1" property="itemDesc1" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC2" property="itemDesc2" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC3" property="itemDesc3" jdbcType="VARCHAR" />
+    <result column="ITEM_DESC4" property="itemDesc4" jdbcType="VARCHAR" />
+    <result column="ITEM_COST_PRICE" property="itemCostPrice" jdbcType="DECIMAL" />
+    <result column="ITEM_MARKET_PRICE" property="itemMarketPrice" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_PRICE" property="itemSalePrice" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_NUM" property="itemSaleNum" jdbcType="DECIMAL" />
+    <result column="ITEM_NUM" property="itemNum" jdbcType="DECIMAL" />
+    <result column="ITEM_VALID_START" property="itemValidStart" jdbcType="TIMESTAMP" />
+    <result column="ITEM_VALID_END" property="itemValidEnd" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SALE_ATTR" property="itemSaleAttr" jdbcType="VARCHAR" />
+    <result column="ITEM_APPR_STATE" property="itemApprState" jdbcType="DECIMAL" />
+    <result column="ITEM_UD_STATE" property="itemUdState" jdbcType="DECIMAL" />
+    <result column="ITEM_STATE_TIME" property="itemStateTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SCHDLON_STATE" property="itemSchdlonState" jdbcType="DECIMAL" />
+    <result column="ITEM_SCHDLON_TIME" property="itemSchdlonTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_SCHDLDOWN_TIME" property="itemSchdldownTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_FORCEOFF_STATE" property="itemForceoffState" jdbcType="DECIMAL" />
+    <result column="ITEM_FORCEOFF_TIME" property="itemForceoffTime" jdbcType="TIMESTAMP" />
+    <result column="ITEM_FORCEOFF_REASON" property="itemForceoffReason" jdbcType="VARCHAR" />
+    <result column="ITEM_SEO_KEYWORD" property="itemSeoKeyword" jdbcType="VARCHAR" />
+    <result column="ITEM_SEO_DESC" property="itemSeoDesc" jdbcType="VARCHAR" />
+    <result column="ITEM_MAX_BUY_NUMS" property="itemMaxBuyNums" jdbcType="DECIMAL" />
+    <result column="ITEM_SALE_FLAG" property="itemSaleFlag" jdbcType="DECIMAL" />
+    <result column="OPTL_PAY_TYPE_STR" property="optlPayTypeStr" jdbcType="VARCHAR" />
+    <result column="DATA_VERSION" property="dataVersion" jdbcType="DECIMAL" />
+    <result column="DATA_STATE" property="dataState" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYER" property="modifyer" jdbcType="DECIMAL" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="iTEM_PIC_URL" property="itemPicUrl" jdbcType="VARCHAR"/>
+    <result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+    <result column="MALL_CAT_NAME" property="mallCatName" jdbcType="DECIMAL" />
+    
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ITEM_ID, MALL_CAT_ID, ITEM_CODE, MCHT_ID, MCHT_NAME, ITEM_TYPE, ITEM_MCHT_NO, ITEM_NAME, 
+    ITEM_SHORT_NAME, ITEM_DESC, ITEM_DESC1, ITEM_DESC2, ITEM_DESC3, ITEM_DESC4, ITEM_COST_PRICE, 
+    ITEM_MARKET_PRICE, ITEM_SALE_PRICE, ITEM_SALE_NUM, ITEM_NUM, ITEM_VALID_START, ITEM_VALID_END, 
+    ITEM_SALE_ATTR, ITEM_APPR_STATE, ITEM_UD_STATE, ITEM_STATE_TIME, ITEM_SCHDLON_STATE, 
+    ITEM_SCHDLON_TIME, ITEM_SCHDLDOWN_TIME, ITEM_FORCEOFF_STATE, ITEM_FORCEOFF_TIME, 
+    ITEM_FORCEOFF_REASON, ITEM_SEO_KEYWORD, ITEM_SEO_DESC, ITEM_MAX_BUY_NUMS, ITEM_SALE_FLAG, 
+    OPTL_PAY_TYPE_STR, DATA_VERSION, DATA_STATE, CREATOR, CREATE_TIME, MODIFYER, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ic_item
+    where ITEM_ID = #{itemId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ic_item
+    where ITEM_ID = #{itemId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItem" >
+    <selectKey resultType="java.lang.Long" keyProperty="itemId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ic_item (ITEM_ID, MALL_CAT_ID, ITEM_CODE, 
+      MCHT_ID, MCHT_NAME, ITEM_TYPE, 
+      ITEM_MCHT_NO, ITEM_NAME, ITEM_SHORT_NAME, 
+      ITEM_DESC, ITEM_DESC1, ITEM_DESC2, 
+      ITEM_DESC3, ITEM_DESC4, ITEM_COST_PRICE, 
+      ITEM_MARKET_PRICE, ITEM_SALE_PRICE, ITEM_SALE_NUM, 
+      ITEM_NUM, ITEM_VALID_START, ITEM_VALID_END, 
+      ITEM_SALE_ATTR, ITEM_APPR_STATE, ITEM_UD_STATE, 
+      ITEM_STATE_TIME, ITEM_SCHDLON_STATE, ITEM_SCHDLON_TIME, 
+      ITEM_SCHDLDOWN_TIME, ITEM_FORCEOFF_STATE, 
+      ITEM_FORCEOFF_TIME, ITEM_FORCEOFF_REASON, 
+      ITEM_SEO_KEYWORD, ITEM_SEO_DESC, ITEM_MAX_BUY_NUMS, 
+      ITEM_SALE_FLAG, OPTL_PAY_TYPE_STR, DATA_VERSION, 
+      DATA_STATE, CREATOR, CREATE_TIME, 
+      MODIFYER, MODIFY_TIME)
+    values (#{itemId,jdbcType=DECIMAL}, #{mallCatId,jdbcType=DECIMAL}, #{itemCode,jdbcType=DECIMAL}, 
+      #{mchtId,jdbcType=DECIMAL}, #{mchtName,jdbcType=VARCHAR}, #{itemType,jdbcType=DECIMAL}, 
+      #{itemMchtNo,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, #{itemShortName,jdbcType=VARCHAR}, 
+      #{itemDesc,jdbcType=VARCHAR}, #{itemDesc1,jdbcType=VARCHAR}, #{itemDesc2,jdbcType=VARCHAR}, 
+      #{itemDesc3,jdbcType=VARCHAR}, #{itemDesc4,jdbcType=VARCHAR}, #{itemCostPrice,jdbcType=DECIMAL}, 
+      #{itemMarketPrice,jdbcType=DECIMAL}, #{itemSalePrice,jdbcType=DECIMAL}, #{itemSaleNum,jdbcType=DECIMAL}, 
+      #{itemNum,jdbcType=DECIMAL}, #{itemValidStart,jdbcType=TIMESTAMP}, #{itemValidEnd,jdbcType=TIMESTAMP}, 
+      #{itemSaleAttr,jdbcType=VARCHAR}, #{itemApprState,jdbcType=DECIMAL}, #{itemUdState,jdbcType=DECIMAL}, 
+      #{itemStateTime,jdbcType=TIMESTAMP}, #{itemSchdlonState,jdbcType=DECIMAL}, #{itemSchdlonTime,jdbcType=TIMESTAMP}, 
+      #{itemSchdldownTime,jdbcType=TIMESTAMP}, #{itemForceoffState,jdbcType=DECIMAL}, 
+      #{itemForceoffTime,jdbcType=TIMESTAMP}, #{itemForceoffReason,jdbcType=VARCHAR}, 
+      #{itemSeoKeyword,jdbcType=VARCHAR}, #{itemSeoDesc,jdbcType=VARCHAR}, #{itemMaxBuyNums,jdbcType=DECIMAL}, 
+      #{itemSaleFlag,jdbcType=DECIMAL}, #{optlPayTypeStr,jdbcType=VARCHAR}, #{dataVersion,jdbcType=DECIMAL}, 
+      #{dataState,jdbcType=DECIMAL}, #{creator,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyer,jdbcType=DECIMAL}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItem" >
+    <selectKey resultType="java.lang.Long" keyProperty="itemId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+	<!-- 根据下一个序列的函数获取主键 -->
+<!--       SELECT nextval('sys_op') -->
+    </selectKey>
+    insert into ic_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ITEM_ID,
+      <if test="mallCatId != null" >
+        MALL_CAT_ID,
+      </if>
+      <if test="itemCode != null" >
+        ITEM_CODE,
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID,
+      </if>
+      <if test="mchtName != null" >
+        MCHT_NAME,
+      </if>
+      <if test="itemType != null" >
+        ITEM_TYPE,
+      </if>
+      <if test="itemMchtNo != null" >
+        ITEM_MCHT_NO,
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME,
+      </if>
+      <if test="itemShortName != null" >
+        ITEM_SHORT_NAME,
+      </if>
+      <if test="itemDesc != null" >
+        ITEM_DESC,
+      </if>
+      <if test="itemDesc1 != null" >
+        ITEM_DESC1,
+      </if>
+      <if test="itemDesc2 != null" >
+        ITEM_DESC2,
+      </if>
+      <if test="itemDesc3 != null" >
+        ITEM_DESC3,
+      </if>
+      <if test="itemDesc4 != null" >
+        ITEM_DESC4,
+      </if>
+      <if test="itemCostPrice != null" >
+        ITEM_COST_PRICE,
+      </if>
+      <if test="itemMarketPrice != null" >
+        ITEM_MARKET_PRICE,
+      </if>
+      <if test="itemSalePrice != null" >
+        ITEM_SALE_PRICE,
+      </if>
+      <if test="itemSaleNum != null" >
+        ITEM_SALE_NUM,
+      </if>
+      <if test="itemNum != null" >
+        ITEM_NUM,
+      </if>
+      <if test="itemValidStart != null" >
+        ITEM_VALID_START,
+      </if>
+      <if test="itemValidEnd != null" >
+        ITEM_VALID_END,
+      </if>
+      <if test="itemSaleAttr != null" >
+        ITEM_SALE_ATTR,
+      </if>
+      <if test="itemApprState != null" >
+        ITEM_APPR_STATE,
+      </if>
+      <if test="itemUdState != null" >
+        ITEM_UD_STATE,
+      </if>
+      <if test="itemStateTime != null" >
+        ITEM_STATE_TIME,
+      </if>
+      <if test="itemSchdlonState != null" >
+        ITEM_SCHDLON_STATE,
+      </if>
+      <if test="itemSchdlonTime != null" >
+        ITEM_SCHDLON_TIME,
+      </if>
+      <if test="itemSchdldownTime != null" >
+        ITEM_SCHDLDOWN_TIME,
+      </if>
+      <if test="itemForceoffState != null" >
+        ITEM_FORCEOFF_STATE,
+      </if>
+      <if test="itemForceoffTime != null" >
+        ITEM_FORCEOFF_TIME,
+      </if>
+      <if test="itemForceoffReason != null" >
+        ITEM_FORCEOFF_REASON,
+      </if>
+      <if test="itemSeoKeyword != null" >
+        ITEM_SEO_KEYWORD,
+      </if>
+      <if test="itemSeoDesc != null" >
+        ITEM_SEO_DESC,
+      </if>
+      <if test="itemMaxBuyNums != null" >
+        ITEM_MAX_BUY_NUMS,
+      </if>
+      <if test="itemSaleFlag != null" >
+        ITEM_SALE_FLAG,
+      </if>
+      <if test="optlPayTypeStr != null" >
+        OPTL_PAY_TYPE_STR,
+      </if>
+      <if test="dataVersion != null" >
+        DATA_VERSION,
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{itemId,jdbcType=DECIMAL},
+      <if test="mallCatId != null" >
+        #{mallCatId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtId != null" >
+        #{mchtId,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtName != null" >
+        #{mchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=DECIMAL},
+      </if>
+      <if test="itemMchtNo != null" >
+        #{itemMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemShortName != null" >
+        #{itemShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc1 != null" >
+        #{itemDesc1,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc2 != null" >
+        #{itemDesc2,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc3 != null" >
+        #{itemDesc3,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc4 != null" >
+        #{itemDesc4,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCostPrice != null" >
+        #{itemCostPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemMarketPrice != null" >
+        #{itemMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSalePrice != null" >
+        #{itemSalePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSaleNum != null" >
+        #{itemSaleNum,jdbcType=DECIMAL},
+      </if>
+      <if test="itemNum != null" >
+        #{itemNum,jdbcType=DECIMAL},
+      </if>
+      <if test="itemValidStart != null" >
+        #{itemValidStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemValidEnd != null" >
+        #{itemValidEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSaleAttr != null" >
+        #{itemSaleAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="itemApprState != null" >
+        #{itemApprState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemUdState != null" >
+        #{itemUdState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemStateTime != null" >
+        #{itemStateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSchdlonState != null" >
+        #{itemSchdlonState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSchdlonTime != null" >
+        #{itemSchdlonTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSchdldownTime != null" >
+        #{itemSchdldownTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemForceoffState != null" >
+        #{itemForceoffState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemForceoffTime != null" >
+        #{itemForceoffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemForceoffReason != null" >
+        #{itemForceoffReason,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSeoKeyword != null" >
+        #{itemSeoKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSeoDesc != null" >
+        #{itemSeoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemMaxBuyNums != null" >
+        #{itemMaxBuyNums,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSaleFlag != null" >
+        #{itemSaleFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="optlPayTypeStr != null" >
+        #{optlPayTypeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null" >
+        #{dataVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItem" >
+    update ic_item
+    <set >
+      <if test="mallCatId != null" >
+        MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCode != null" >
+        ITEM_CODE = #{itemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID = #{mchtId,jdbcType=DECIMAL},
+      </if>
+      <if test="mchtName != null" >
+        MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        ITEM_TYPE = #{itemType,jdbcType=DECIMAL},
+      </if>
+      <if test="itemMchtNo != null" >
+        ITEM_MCHT_NO = #{itemMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemShortName != null" >
+        ITEM_SHORT_NAME = #{itemShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null" >
+        ITEM_DESC = #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc1 != null" >
+        ITEM_DESC1 = #{itemDesc1,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc2 != null" >
+        ITEM_DESC2 = #{itemDesc2,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc3 != null" >
+        ITEM_DESC3 = #{itemDesc3,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc4 != null" >
+        ITEM_DESC4 = #{itemDesc4,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCostPrice != null" >
+        ITEM_COST_PRICE = #{itemCostPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemMarketPrice != null" >
+        ITEM_MARKET_PRICE = #{itemMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSalePrice != null" >
+        ITEM_SALE_PRICE = #{itemSalePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSaleNum != null" >
+        ITEM_SALE_NUM = #{itemSaleNum,jdbcType=DECIMAL},
+      </if>
+      <if test="itemNum != null" >
+        ITEM_NUM = #{itemNum,jdbcType=DECIMAL},
+      </if>
+      <if test="itemValidStart != null" >
+        ITEM_VALID_START = #{itemValidStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemValidEnd != null" >
+        ITEM_VALID_END = #{itemValidEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSaleAttr != null" >
+        ITEM_SALE_ATTR = #{itemSaleAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="itemApprState != null" >
+        ITEM_APPR_STATE = #{itemApprState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemUdState != null" >
+        ITEM_UD_STATE = #{itemUdState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemStateTime != null" >
+        ITEM_STATE_TIME = #{itemStateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSchdlonState != null" >
+        ITEM_SCHDLON_STATE = #{itemSchdlonState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSchdlonTime != null" >
+        ITEM_SCHDLON_TIME = #{itemSchdlonTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemSchdldownTime != null" >
+        ITEM_SCHDLDOWN_TIME = #{itemSchdldownTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemForceoffState != null" >
+        ITEM_FORCEOFF_STATE = #{itemForceoffState,jdbcType=DECIMAL},
+      </if>
+      <if test="itemForceoffTime != null" >
+        ITEM_FORCEOFF_TIME = #{itemForceoffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemForceoffReason != null" >
+        ITEM_FORCEOFF_REASON = #{itemForceoffReason,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSeoKeyword != null" >
+        ITEM_SEO_KEYWORD = #{itemSeoKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSeoDesc != null" >
+        ITEM_SEO_DESC = #{itemSeoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemMaxBuyNums != null" >
+        ITEM_MAX_BUY_NUMS = #{itemMaxBuyNums,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSaleFlag != null" >
+        ITEM_SALE_FLAG = #{itemSaleFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="optlPayTypeStr != null" >
+        OPTL_PAY_TYPE_STR = #{optlPayTypeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null" >
+        DATA_VERSION = #{dataVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="dataState != null" >
+        DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyer != null" >
+        MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ITEM_ID = #{itemId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.jf.console.item.bean.pojo.IcItem" >
+    update ic_item
+    set MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL},
+      ITEM_CODE = #{itemCode,jdbcType=DECIMAL},
+      MCHT_ID = #{mchtId,jdbcType=DECIMAL},
+      MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+      ITEM_TYPE = #{itemType,jdbcType=DECIMAL},
+      ITEM_MCHT_NO = #{itemMchtNo,jdbcType=VARCHAR},
+      ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      ITEM_SHORT_NAME = #{itemShortName,jdbcType=VARCHAR},
+      ITEM_DESC = #{itemDesc,jdbcType=VARCHAR},
+      ITEM_DESC1 = #{itemDesc1,jdbcType=VARCHAR},
+      ITEM_DESC2 = #{itemDesc2,jdbcType=VARCHAR},
+      ITEM_DESC3 = #{itemDesc3,jdbcType=VARCHAR},
+      ITEM_DESC4 = #{itemDesc4,jdbcType=VARCHAR},
+      ITEM_COST_PRICE = #{itemCostPrice,jdbcType=DECIMAL},
+      ITEM_MARKET_PRICE = #{itemMarketPrice,jdbcType=DECIMAL},
+      ITEM_SALE_PRICE = #{itemSalePrice,jdbcType=DECIMAL},
+      ITEM_SALE_NUM = #{itemSaleNum,jdbcType=DECIMAL},
+      ITEM_NUM = #{itemNum,jdbcType=DECIMAL},
+      ITEM_VALID_START = #{itemValidStart,jdbcType=TIMESTAMP},
+      ITEM_VALID_END = #{itemValidEnd,jdbcType=TIMESTAMP},
+      ITEM_SALE_ATTR = #{itemSaleAttr,jdbcType=VARCHAR},
+      ITEM_APPR_STATE = #{itemApprState,jdbcType=DECIMAL},
+      ITEM_UD_STATE = #{itemUdState,jdbcType=DECIMAL},
+      ITEM_STATE_TIME = #{itemStateTime,jdbcType=TIMESTAMP},
+      ITEM_SCHDLON_STATE = #{itemSchdlonState,jdbcType=DECIMAL},
+      ITEM_SCHDLON_TIME = #{itemSchdlonTime,jdbcType=TIMESTAMP},
+      ITEM_SCHDLDOWN_TIME = #{itemSchdldownTime,jdbcType=TIMESTAMP},
+      ITEM_FORCEOFF_STATE = #{itemForceoffState,jdbcType=DECIMAL},
+      ITEM_FORCEOFF_TIME = #{itemForceoffTime,jdbcType=TIMESTAMP},
+      ITEM_FORCEOFF_REASON = #{itemForceoffReason,jdbcType=VARCHAR},
+      ITEM_SEO_KEYWORD = #{itemSeoKeyword,jdbcType=VARCHAR},
+      ITEM_SEO_DESC = #{itemSeoDesc,jdbcType=VARCHAR},
+      ITEM_MAX_BUY_NUMS = #{itemMaxBuyNums,jdbcType=DECIMAL},
+      ITEM_SALE_FLAG = #{itemSaleFlag,jdbcType=DECIMAL},
+      OPTL_PAY_TYPE_STR = #{optlPayTypeStr,jdbcType=VARCHAR},
+      DATA_VERSION = #{dataVersion,jdbcType=DECIMAL},
+      DATA_STATE = #{dataState,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFYER = #{modifyer,jdbcType=DECIMAL},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ITEM_ID = #{itemId,jdbcType=DECIMAL}
+  </update>
+  
+  
+   <select id="selectItem" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> 
+  	from ic_item 
+  </select> 
+  
+  <!-- 根据多个条件查询IcItem -->
+  <select id="selectIcItemList" parameterType="java.util.Map" resultMap="BaseResultMapBean">
+	  SELECT 
+	  	i.`ITEM_ID`,
+		i.`MALL_CAT_ID`,i.`ITEM_CODE`,i.`MCHT_ID`,i.`MCHT_NAME`
+		,i.`ITEM_MCHT_NO`,i.`ITEM_NAME`,i.`ITEM_SHORT_NAME`
+		,i.`ITEM_DESC`,i.`ITEM_DESC1`,i.`ITEM_DESC2`,i.`ITEM_DESC3`
+		,i.`ITEM_DESC4`,i.`ITEM_COST_PRICE`,i.`ITEM_MARKET_PRICE`
+		,i.`ITEM_SALE_PRICE`,i.`ITEM_SALE_NUM`,i.`ITEM_NUM`,i.`ITEM_VALID_START`,
+		`ITEM_VALID_END`,i.`ITEM_SALE_ATTR`,i.`ITEM_APPR_STATE`,i.`ITEM_UD_STATE`
+		,i.`ITEM_STATE_TIME`,i.`ITEM_SCHDLON_STATE`,i.`ITEM_SCHDLON_TIME`
+		,i.`ITEM_SCHDLDOWN_TIME`,i.`ITEM_FORCEOFF_STATE`,i.`ITEM_FORCEOFF_TIME`
+		,i.`ITEM_FORCEOFF_REASON`,i.`ITEM_SEO_KEYWORD`,i.`ITEM_SEO_DESC`
+		,i.`ITEM_MAX_BUY_NUMS`,i.`ITEM_SALE_FLAG`,i.`OPTL_PAY_TYPE_STR`,i.`DATA_VERSION`
+		,i.`CREATOR`,i.`CREATE_TIME`,i.`MODIFYER`,
+		i.`MODIFY_TIME`,
+		m.`MALL_CAT_NAME`,
+		p.`ITEM_PIC_URL`,
+		iit.`ITEM_TYPE_NAME` 
+		FROM
+		`ic_item` i 
+		LEFT JOIN `ic_mall_cat` m 
+		ON i.`MALL_CAT_ID` = m.`MALL_CAT_ID` 
+		LEFT JOIN `ic_item_picture` p 
+		ON i.item_id = p.`ITEM_ID` 
+		LEFT JOIN `ic_item_type` iit 
+		ON i.`ITEM_TYPE` = iit.`ITEM_TYPE` 
+		WHERE i.data_state = 1 
+	   <if test="itemId != null">
+	   and i.ITEM_ID = #{itemId,jdbcType=DECIMAL}
+	   </if>
+	   <if test="mallCatId != null" >
+        and i.MALL_CAT_ID = #{mallCatId,jdbcType=DECIMAL}
+      </if>
+      <if test="itemCode != null" >
+       and i. ITEM_CODE = #{itemCode,jdbcType=DECIMAL}
+      </if>
+      <if test="itemType != null" >
+        and i.ITEM_TYPE = #{itemType,jdbcType=DECIMAL}
+      </if>
+      <if test="itemName != null" >
+        and i.ITEM_NAME = #{itemName,jdbcType=VARCHAR}
+      </if>
+      <if test="itemMarketPrice != null" >
+        and i.ITEM_MARKET_PRICE = #{itemMarketPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="itemSalePrice != null" >
+        and i.ITEM_SALE_PRICE = #{itemSalePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="itemSaleNum != null" >
+        and i.ITEM_SALE_NUM = #{itemSaleNum,jdbcType=DECIMAL}
+      </if>
+      <if test="itemNum != null" >
+        and i.ITEM_NUM = #{itemNum,jdbcType=DECIMAL}
+      </if>
+      <if test="itemValidStart != null" >
+        and i.ITEM_VALID_START = #{itemValidStart,jdbcType=TIMESTAMP}
+      </if>
+      <if test="itemValidEnd != null" >
+        and i.ITEM_VALID_END = #{itemValidEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="itemSaleAttr != null" >
+        and i.ITEM_SALE_ATTR = #{itemSaleAttr,jdbcType=VARCHAR}
+      </if>
+      <if test="itemApprState != null" >
+        and i.ITEM_APPR_STATE = #{itemApprState,jdbcType=DECIMAL}
+      </if>
+      <if test="itemUdState != null" >
+        and i.ITEM_UD_STATE = #{itemUdState,jdbcType=DECIMAL}
+      </if>
+      <if test="itemStateTime != null" >
+        and i.ITEM_STATE_TIME = #{itemStateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="itemSchdlonState != null" >
+        and i.ITEM_SCHDLON_STATE = #{itemSchdlonState,jdbcType=DECIMAL}
+      </if>
+  </select>
+  
+  <!-- 查询最大的itemId值 -->
+  <select id="selectMaxItemId" resultType="java.lang.Long">
+  	SELECT MAX(i.`ITEM_ID`) FROM ic_item i;
+  </select>
+  
+  <!-- 删除商品 -->
+  <update id="deleteIcItemByItemId" parameterType="java.lang.Long">
+  	update ic_item i set data_state = 0 where i.item_id = #{itemId}
+  </update>
+  
+  
+  
+</mapper>
