@@ -32,9 +32,33 @@ public class AdvController {
 	@Autowired
 	private AdvService advService;
 	
-	//页面展示
+	//页面展示，后台传的时间数据是1481558400000的格式，后台JavaScript可以new Date后toLocalString进行格式化
 	@ResponseBody
 	@RequestMapping("selectAdvListPageHelper")
+	public PageInfo<Adv> JavaScriptDate(Integer page,Integer limit,String advPos,String advName,String advOrder,String advAreaId,String advState){
+		Map<String,Object> map=new HashMap<>();
+		//名称
+		map.put("advName", advName);
+		//位置
+		map.put("advPos", advPos);
+		//顺序
+		map.put("advOrder", advOrder);
+		//区域
+		map.put("advAreaId", advAreaId);
+		//广告位状态
+		map.put("advState", advState);
+		
+		PageHelper.startPage(page, limit);
+		
+		List<Adv> list=advService.selectAdvListPageHelper(map);
+		PageInfo<Adv> pageInfo=new PageInfo<>(list);
+		
+		return pageInfo;	
+	}
+	
+	
+	/*@ResponseBody
+	@RequestMapping("selectAdvListPageHelper")*/
 	public String selectAdvListPageHelper(Integer page,Integer limit,String advPos,String advName,String advOrder,String advAreaId,String advState){
 		Map<String,Object> map=new HashMap<>();
 		//名称

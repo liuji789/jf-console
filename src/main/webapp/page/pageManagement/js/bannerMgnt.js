@@ -302,16 +302,22 @@ function initGrid(){
             },
             {
             	text     : '播放开始时间',
-            	width    : 140,
+            	width    : 160,
             	sortable : true,//设置为false则禁用通过单击标题和排序菜单项来进行列排序。默认为true
-            	dataIndex: 'advStartTime',
+            	dataIndex: 'advStartTime',renderer:function(value){
+            		var date = new Date(parseInt(value));
+            		return date.toLocaleString();
+            	},
             	align   : 'center'
             },
             {
             	text     : '播放结束时间',
-            	width    : 140,
+            	width    : 160,
             	sortable : true,//设置为false则禁用通过单击标题和排序菜单项来进行列排序。默认为true
-            	dataIndex: 'advEndTime',
+            	dataIndex: 'advEndTime',renderer:function(value){
+            		var date = new Date(parseInt(value));
+            		return date.toLocaleString();
+            	},
             	align   : 'center'
             },
             
