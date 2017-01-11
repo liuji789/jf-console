@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -17,6 +18,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +37,8 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ResourceBundleMessageSource messageSoure;
 
 	@RequestMapping("getVerifyCodeImage")
 	public void getVerifyCodeImage(HttpServletResponse response,HttpSession session) throws Exception{
@@ -55,7 +59,9 @@ public class LoginController {
 	}
 	
 //	@RequestMapping("login")
-//	public String login(String username,String password,RedirectAttributes redirectAttributes,String verifyCode,HttpSession session)throws Exception{
+//	public String login(String username,String password,
+//			RedirectAttributes redirectAttributes,String verifyCode,
+//			HttpSession session,Locale locale)throws Exception{
 //		
 //		//存在session中的VerifyCode
 //		String sVerifyCode = (String) session.getAttribute("verifyCode");
@@ -71,7 +77,10 @@ public class LoginController {
 //		SysOp sysOp = userService.selectSysOpByUsernameOrPwd(param);
 //		if (sysOp == null) {
 //			logger.error("登录时，用户名或密码不正确！");
-//			redirectAttributes.addFlashAttribute("errMsg", "用户名或密码不正确！");
+//			String code = "error.js.user.login";
+//			Object[] args = null;
+//			String message = resourceBundleMessageSource.getMessage(code, args, locale);
+//			redirectAttributes.addFlashAttribute("errMsg", message);
 //			return "redirect:/login";
 //			
 //		}
@@ -81,8 +90,20 @@ public class LoginController {
 //		return "redirect:/index";
 //	}
 	
+	/**
+	 * ①：在Handler方法中添加RedirectAttributes类型的参数
+	 * ②：在Handler方法中使用addFlashAttribute方法，添加key-val对
+	 * ③：转发页面，要求，必经过SpringMVC映射过的
+	 * 国际化：
+	 * 1，SpringMVC配置国际化资源文件
+	 * 2，编写国际化资源文件
+	 * 3，将ResourceBundleMessageSource注入为Handler的成员变量
+	 * 4，调用ResourceBundleMessageSource的getMessage方法，获取消息
+	 */
 	@RequestMapping("login")
-	public String login(String username,String password,RedirectAttributes redirectAttributes,String verifyCode,HttpSession session)throws Exception{
+	public String login(String username,String password,
+			RedirectAttributes redirectAttributes,String verifyCode,
+			HttpSession session,Locale locale)throws Exception{
 		
 		//存在session中的VerifyCode
 		String sVerifyCode = (String) session.getAttribute("verifyCode");
@@ -103,7 +124,11 @@ public class LoginController {
 				currentUser.login(token);
 			} catch (AuthenticationException e) {
 				logger.info("用户登录错误，用户名或密码错误！"+e.getMessage());
-				redirectAttributes.addFlashAttribute("errMsg", "用户名或密码不正确！");
+				String code = "error.js.user.login";
+				Object[] args = null;
+				//TODO:shiro后没有提示
+				String message = messageSoure.getMessage(code, args, locale);
+				redirectAttributes.addFlashAttribute("errMsg", message);
 			}
 		}
 		session.setAttribute("currentUser", currentUser.getPrincipal());
