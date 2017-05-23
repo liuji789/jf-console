@@ -1,16 +1,9 @@
 package com.atguigu.jf.console.user.controller;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.atguigu.jf.console.common.utils.VerifyCodeUtil;
+import com.atguigu.jf.console.user.bean.bo.SysFuncBean;
+import com.atguigu.jf.console.user.bean.pojo.SysOp;
+import com.atguigu.jf.console.user.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -24,10 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.atguigu.jf.console.common.utils.VerifyCodeUtil;
-import com.atguigu.jf.console.user.bean.bo.SysFuncBean;
-import com.atguigu.jf.console.user.bean.pojo.SysOp;
-import com.atguigu.jf.console.user.service.UserService;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 @Controller
 @RequestMapping("logincontroller")
